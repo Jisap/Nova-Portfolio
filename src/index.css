@@ -336,10 +336,7 @@ body {
   cursor: pointer;
   border: none;
   text-align: center;
-  padding: 3px;
-  transform: scale(.87);
-  background-color: white;
-  color: #000;
+  background-color: var(--color-primary);
   transition: all .4s cubic-bezier(.3, 0, .3, 1);
 }
 
@@ -350,7 +347,7 @@ body {
   left: 0;
   width: 100%;
   height: 0%;
-  background-color: #fff;
+  background-color: white;
   transition: all .4s cubic-bezier(.3, 0, .3, 1);
 }
 
@@ -359,6 +356,8 @@ body {
   top: 0;
   bottom: auto;
 }
+
+
 
 .btn:hover span {
   color: #000;

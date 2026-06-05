@@ -1,6 +1,6 @@
 import heroVideo from "../assets/hero-video.mp4"
 import title_icon from "../../public/title_icon.svg"
-import { Link } from "react-router-dom"
+import { Link, Links } from "react-router-dom"
 import { Icon } from "@iconify/react"
 import ser1 from "/public/serv-icon1.png"
 import ser2 from "/serv-icon2.png"
@@ -98,6 +98,89 @@ const Index = () => {
           </div>
         ))}
       </div>
+
+      {/* About */}
+      <div className="about py-[8%] px-[2%] md:px-[8%] xl:px-[12%] flex justify-between items-start lg:flex-row flex-col gap-10">
+        <div className="about-content w-full lg:w-[60%]">
+          <span className="text-black bg-primary px-2 py-3 font-semibold text-md sm:text-xl rounded-sm">
+            Welcome to Nova
+          </span>
+
+          <h2 className="text-3xl sm:text-6xl font-semibold sm:max-w-3xl my-6 leagin-tight text-white">
+            A Design Agency Delivering Success by Winning Hearts
+          </h2>
+
+          <ul className="flex xl:flex-nowrap flex-wrap gap-5 lg:gap-10">
+            <li className="w-full xl:w-1/2">
+              <span className="font-semibold text-2xl text-white">
+                Our Mission
+              </span>
+
+              <p className="text-md sm:text-xl mt-2 text-gray-300">
+                From the moment our company was founded we have helped our clients find <b>exceptional solutions for their bussinesses</b> memorable brnds and digital
+                products. Our expertise grows with each year, and our accumulated experience.
+              </p>
+            </li>
+
+            <li className="w-full xl:w-1/2">
+              <span className="font-semibold text-2xl text-white">
+                Our Goal
+              </span>
+
+              <p className="text-md sm:text-xl my-2 text-gray-300">
+                Our goal is to delivery amazing experiences that make people talk, and build strategic value for brands, tech, entertainament.
+              </p>
+
+              <Link to="/about" className="btn rounded-sm mt-4">
+                <Icon icon="vaadin:plus" width="30" height="30" />
+                <span>More About Us</span>
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        <div className="w-full lg:w-[40%] flex justify-center items-center">
+          <div className="flex items-center justify-center w-[250px] h-[250px] relative border rounded-full">
+            <svg
+              viewBox="0 0 300 300"
+              className="absolute w-full h-full animate-[spin_20s_linear_infinite]"
+            >
+              <defs>
+                <path
+                  id="circlePath"
+                  d="M150,150 m-120,0 a120,120 0 1,1 240,0 a120,120 0 1,1 -240,0"
+                />
+              </defs>
+
+              <text
+                fill="#fff"
+                fontSize="13"
+                fontWeight="600"
+                letterSpacing="4"
+                textlength="1400"
+              >
+                <textPath href="#circlePath" starOffset="0" textLength="754" lengthAdjust="spacing">
+                  YEARS OF DIGITAL SOLUTIONS EXPERIENCE • YEARS OF DIGITAL SOLUTIONS EXPERIENCE •
+                </textPath>
+              </text>
+            </svg>
+
+            <div className="border rounded-[50%] px-6 py-5">
+              <div
+                className="text-8xl font-bold text-transparent mt-5 border"
+                style={{
+                  WebkitTextStrokeWidth: "3px",
+                  WebkitTextStrokeColor: "#fff"
+                }}
+              >
+                14
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Splide */}
     </>
   )
 }
