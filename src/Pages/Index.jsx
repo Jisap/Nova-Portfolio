@@ -6,6 +6,9 @@ import ser1 from "/public/serv-icon1.png"
 import ser2 from "/serv-icon2.png"
 import ser3 from "/serv-icon3.png"
 import { useState } from "react"
+import "@splidejs/react-splide/css";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
 
 
 const Index = () => {
@@ -16,6 +19,13 @@ const Index = () => {
     { id: 1, title: "Creation", img: ser1 },
     { id: 2, title: "Websites", img: ser2 },
     { id: 3, title: "Studio", img: ser3 },
+  ];
+
+  const items = [
+    "- Creative Direction",
+    "- Machine Learning / AI",
+    "- Brand Strategy",
+    "- Native and Webs Apps",
   ]
 
   return (
@@ -181,6 +191,39 @@ const Index = () => {
       </div>
 
       {/* Splide */}
+      <div className="py-[2%] flex justify-center items-center">
+        <div className="w-full overflow-hidden border-t border-white border-b ">
+          <Splide
+            options={{
+              type: "loop",
+              drag: "free",
+              autoWidth: true,
+              arrows: false,
+              pagination: false,
+              gap: "4rem",
+              autoScroll: {
+                speed: 1,
+                pauseOnHover: true,
+              },
+            }}
+            extensions={{ AutoScroll }}
+          >
+            {items.map((text, index) => (
+              <SplideSlide key={index}>
+                <div
+                  className="text-[10vw] font-bold uppercase whitespace-nowrap"
+                  style={{
+                    color: "transparent",
+                    WebkitTextStroke: "2px #fff"
+                  }}
+                >
+                  {text}
+                </div>
+              </SplideSlide>
+            ))}
+          </Splide>
+        </div>
+      </div>
     </>
   )
 }
