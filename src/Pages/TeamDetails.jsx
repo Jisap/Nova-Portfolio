@@ -1,5 +1,3 @@
-import React from 'react'
-
 const TeamDetails = () => {
   return (
     <div>TeamDetails</div>

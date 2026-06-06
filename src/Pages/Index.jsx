@@ -1,15 +1,18 @@
 import heroVideo from "../assets/hero-video.mp4"
-import title_icon from "../../public/title_icon.svg"
+import title_icon from "../assets/title_icon.svg"
 import { Link, Links } from "react-router-dom"
 import { Icon } from "@iconify/react"
-import ser1 from "/public/serv-icon1.png"
-import ser2 from "/serv-icon2.png"
-import ser3 from "/serv-icon3.png"
+import ser1 from "../assets/serv-icon1.png"
+import ser2 from "../assets/serv-icon2.png"
+import ser3 from "../assets/serv-icon3.png"
 import { useState } from "react"
 import "@splidejs/react-splide/css";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
-
+import project1 from "../assets/project-01.jpg"
+import project2 from "../assets/project-02.jpg"
+import project3 from "../assets/project-03.jpg"
+import project4 from "../assets/project-04.jpg"
 
 const Index = () => {
 
@@ -26,7 +29,35 @@ const Index = () => {
     "- Machine Learning / AI",
     "- Brand Strategy",
     "- Native and Webs Apps",
+  ];
+
+  const projects = [
+    {
+      id: 1,
+      image: project1,
+      category: "Branding",
+      title: "Museums Art Concept",
+    },
+    {
+      id: 2,
+      image: project2,
+      category: "Marketing",
+      title: "Market Economy Graphics",
+    },
+    {
+      id: 3,
+      image: project3,
+      category: "Design",
+      title: "Headphones 3D Rendering",
+    },
+    {
+      id: 4,
+      image: project4,
+      category: "Branding",
+      title: "Product Packaging Style",
+    },
   ]
+
 
   return (
     <>
@@ -167,9 +198,9 @@ const Index = () => {
                 fontSize="13"
                 fontWeight="600"
                 letterSpacing="4"
-                textlength="1400"
+                textLength="1400"
               >
-                <textPath href="#circlePath" starOffset="0" textLength="754" lengthAdjust="spacing">
+                <textPath href="#circlePath" staroffset="0" textLength="754" lengthAdjust="spacing">
                   YEARS OF DIGITAL SOLUTIONS EXPERIENCE • YEARS OF DIGITAL SOLUTIONS EXPERIENCE •
                 </textPath>
               </text>
@@ -224,6 +255,55 @@ const Index = () => {
           </Splide>
         </div>
       </div>
+
+      {/* Features Projects */}
+      <div className="featured py-[8%] px-[2%] md:px-[8%] xl:px-[12%]">
+        <div className="featured-conten w-full flex justify-between flex-col lg:flex-row lg:items-end mb-10">
+          <div>
+            <span className="text-black bg-primary px-2 py-3 font-semibold text-md sm:text-xl rounded-sm">
+              Featured Projects
+            </span>
+
+            <h2 className="text-2xl sm:text-6xl font-semibold sm:max-w-3xl mt-5 leagin-tight text-white">
+              Studio Showcase
+            </h2>
+          </div>
+
+          <Link to="/projects" className="btn rounded-sm mt-4 w-fit">
+            <Icon icon="vaadin:plus" width="30" height="30" />
+            <span>More Projects</span>
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 xl:grid-cols-2 text-white gap-10 w-full lg:w-[90%] xl:w-full">
+          {projects.map((item) => (
+            <div
+              key={item.id}
+              className="border border-gray-300/20 p-5 rounded-lg group"
+            >
+              <div className="h-[550px] w-full rounded-lg overflow-hidden mb-5 cursor-pointer">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover transition-all duration-300 group-hover:scale-110"
+                />
+              </div>
+
+              <Link to={`/projects/${item.id}`}>
+                <span className="text-white border border-gray-50/20 px-2 py-1 font-semibold text-lg rounded-sm">
+                  {item.category}
+                </span>
+
+                <h3 className="text-2xl sm:text-4xl font-semibold mt-2 hover:text-primary transition-all duration-300">
+                  {item.title}
+                </h3>
+              </Link>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Team */}
     </>
   )
 }
