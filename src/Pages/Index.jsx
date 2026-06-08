@@ -13,6 +13,10 @@ import project1 from "../assets/project-01.jpg"
 import project2 from "../assets/project-02.jpg"
 import project3 from "../assets/project-03.jpg"
 import project4 from "../assets/project-04.jpg"
+import team1 from "../assets/team-01.png"
+import team2 from "../assets/team-02.png"
+import team3 from "../assets/team-03.png"
+import team4 from "../assets/team-04.png"
 
 const Index = () => {
 
@@ -55,6 +59,37 @@ const Index = () => {
       image: project4,
       category: "Branding",
       title: "Product Packaging Style",
+    },
+  ];
+
+  const members = [
+    {
+      id: 1,
+      name: "Aarav Rao",
+      role: "UI/UX Designer",
+      img: team1,
+      letter: "A"
+    },
+    {
+      id: 2,
+      name: "Diya mehra",
+      role: "Digital Marketer",
+      img: team2,
+      letter: "D"
+    },
+    {
+      id: 3,
+      name: "Karan Thakor",
+      role: "Full-Stacl Developer",
+      img: team3,
+      letter: "K"
+    },
+    {
+      id: 4,
+      name: "Sara Thomas",
+      role: "Content Strategist",
+      img: team4,
+      letter: "S"
     },
   ]
 
@@ -304,6 +339,37 @@ const Index = () => {
       </div>
 
       {/* Team */}
+      <div className="team py-[8%] px-[2%] md:px-[8%] xl:px-[12%]">
+        <div className="team-conten w-full lg:w-[60%] mb-10">
+          <div>
+            <span className="text-black bg-primary px-2 py-3 font-semibold text-md sm:text-xl rounded-sm">
+              Experts Team Members
+            </span>
+
+            <h2 className="text-2xl sm:text-6xl font-semibold sm:max-w-3xl mt-5 leading-tight text-white">
+              We do awesome Services for out clients.
+            </h2>
+          </div>
+        </div>
+
+        <div className="team-wrapper grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 ">
+          {members.map((member) => (
+            <div
+              key={member.id}
+              className="team-item relative overflow-hidden text-white border border-gray-50/20 h-[600px] md:h-[740px] group flex flex-col justify-between"
+            >
+              {/* Description */}
+              <div className="desc p-6 md:p-8">
+                <div className="mb-4">
+                  <span className="block text-3xl md:text-5xl group-hover:text-black font-bold leading-tight transition-colors duration-300">
+                    {member.name}
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </>
   )
 }
