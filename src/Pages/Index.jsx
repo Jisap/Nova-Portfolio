@@ -364,7 +364,56 @@ const Index = () => {
                   <span className="block text-3xl md:text-5xl group-hover:text-black font-bold leading-tight transition-colors duration-300">
                     {member.name}
                   </span>
+
+                  <span className="block font-semibold text-gray-100 text-sm md:text-md group-hover:text-black transition-colors duration-300">
+                    {member.role}
+                  </span>
                 </div>
+
+                {/* social links */}
+                <div className="flex gap-3">
+                  <Link
+                    to="#"
+                    className="border border-gray-50/20 p-3 md:p-5 rounded-full group-hover:border-black transition-colors duration-300"
+                  >
+                    <Icon
+                      icon="ri:facebook-fill"
+                      width="24"
+                      height="24"
+                      className="group-hover:text-black transiton-transform duration-300 group-hover:scale-110"
+                    />
+                  </Link>
+
+                  <Link
+                    to="#"
+                    className="border border-gray-50/20 p-3 md:p-5 rounded-full group-hover:border-black transition-colors duration-300"
+                  >
+                    <Icon
+                      icon="flowbite:linkedin-solid"
+                      width="24"
+                      height="24"
+                      className="group-hover:text-black transiton-transform duration-300 group-hover:scale-110"
+                    />
+                  </Link>
+                </div>
+              </div>
+
+              {/* Image + letter */}
+              <div className="image relative">
+                <img
+                  src={member.img}
+                  alt={member.name}
+                  className="w-full h-auto scale-100 grayscale group-hover:scale-110 group-hover:grayscale-0 transition-all duration-500 ease-[cubic-bezier(0.3,0,0.3,1)]"
+                />
+              </div>
+
+              <div
+                className="num absolute -right-3 md:-right-5 bottom-0 text-[180px] sm:text-[220px] md:text-[300px] font-bold leading-[0.5] group-hover:text-primary pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.3,0,0.3,1)]"
+                style={{
+                  textShadow: "1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000",
+                }}
+              >
+                <span>{member.letter}</span>
               </div>
             </div>
           ))}
