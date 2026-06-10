@@ -18,6 +18,9 @@ import team2 from "../assets/team-02.png"
 import team3 from "../assets/team-03.png"
 import team4 from "../assets/team-04.png"
 import CountUp from "../Components/CountUp"
+import blog1 from "../assets/blog_01.jpg"
+import blog2 from "../assets/blog_02.jpg"
+import blog3 from "../assets/blog_03.jpg"
 
 
 const Index = () => {
@@ -123,6 +126,33 @@ const Index = () => {
       name: "David Wilson",
       role: "Project Lead",
       rating: 4.9,
+    },
+  ];
+
+  const blogs = [
+    {
+      id: 1,
+      date: "April 10, 2025",
+      category: "Art",
+      title: "Play to your Strength and Supercharge your Business",
+      description: "Ambleton: Behind the Branding",
+      image: blog1,
+    },
+    {
+      id: 2,
+      date: "May 22, 2025",
+      category: "Marketing",
+      title: "5 steps to Create an Outstanding Marketing Plan",
+      description: "Ambleton: Behing the Branding of High Calgary's Community Mos innovative company",
+      image: blog2,
+    },
+    {
+      id: 3,
+      date: "May 15, 2025",
+      category: "Copywriting",
+      title: "10 Content Proofreading Tips to Catch More Avoidable Errors",
+      description: "Ambleton: The Most Important Element in Ad Creating",
+      image: blog3,
     },
   ]
 
@@ -656,6 +686,23 @@ const Index = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Blog */}
+      <div className="blog py-[8%] px-[2%] md:px-[8%] xl:px-[12%]">
+        <div className="blog-conten w-full lg:w-[60%] mb-10">
+          <div>
+            <span className="text-black bg-primary px-2 py-3 font-semibold text-md sm:text-xl rounded-sm">
+              News & Blog
+            </span>
+
+            <h2 className="text-2xl sm:text-6xl font-semibold sm:max-w-3xl mt-5 leading-tight text-white">
+              Insights, Thoughts, Industry Trends, Marketing Tips.
+            </h2>
+          </div>
+        </div>
+
+
       </div>
     </>
   )
