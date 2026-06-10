@@ -528,6 +528,40 @@ const Index = () => {
           >
             <CountUp start={0} end={23} duration={2} />
           </h2>
+
+          <p className="text-gray-300 text-lg font-semibold mt-3">
+            Team members
+          </p>
+        </div>
+
+        <div className="text-center">
+          <h2 className="text-7xl sm:text-8xl font-bold leading-none"
+            style={{
+              color: "transparent",
+              WebkitTextStroke: "2px white"
+            }}
+          >
+            <CountUp start={0} end={99} duration={2.5} />+
+          </h2>
+
+          <p className="text-gray-300 text-lg font-semibold mt-3">
+            Completed projects
+          </p>
+        </div>
+
+        <div className="text-center">
+          <h2 className="text-7xl sm:text-8xl font-bold leading-none"
+            style={{
+              color: "transparent",
+              WebkitTextStroke: "2px white"
+            }}
+          >
+            <CountUp start={0} end={12} duration={2.8} />M
+          </h2>
+
+          <p className="text-gray-300 text-lg font-semibold mt-3">
+            Lines of code
+          </p>
         </div>
       </div>
     </>
