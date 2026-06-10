@@ -1,6 +1,6 @@
 import heroVideo from "../assets/hero-video.mp4"
 import title_icon from "../assets/title_icon.svg"
-import { Link, Links } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { Icon } from "@iconify/react"
 import ser1 from "../assets/serv-icon1.png"
 import ser2 from "../assets/serv-icon2.png"
@@ -17,6 +17,8 @@ import team1 from "../assets/team-01.png"
 import team2 from "../assets/team-02.png"
 import team3 from "../assets/team-03.png"
 import team4 from "../assets/team-04.png"
+import CountUp from "../Components/CountUp"
+
 
 const Index = () => {
 
@@ -512,6 +514,20 @@ const Index = () => {
               </SplideSlide>
             ))}
           </Splide>
+        </div>
+      </div>
+
+      {/* Counts */}
+      <div className="grid grid-cols-1 py-[8%] sm:grid-cols-3 gap-12 px-[2%] md:px-[8%] xl:px-[12%]">
+        <div className="text-center">
+          <h2 className="text-7xl sm:text-8xl font-bold leading-none"
+            style={{
+              color: "transparent",
+              WebkitTextStroke: "2px white"
+            }}
+          >
+            <CountUp start={0} end={23} duration={2} />
+          </h2>
         </div>
       </div>
     </>
