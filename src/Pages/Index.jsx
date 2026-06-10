@@ -91,6 +91,37 @@ const Index = () => {
       img: team4,
       letter: "S"
     },
+  ];
+
+  const testimonials = [
+    {
+      id: 1,
+      text: "Their high level of customer service. Always available and quick to respond. They exceeded all expectations.",
+      name: "Jessica Brown",
+      role: "Design Quality",
+      rating: 4.5,
+    },
+    {
+      id: 2,
+      text: "Working with them was seamless. They understood our vision and brought it to life perfectly. I will work with them again.",
+      name: "Mark Johnson",
+      role: "Creative Director",
+      rating: 5.0,
+    },
+    {
+      id: 3,
+      text: "The results speak for themselves. Our engagement increased by 300% in just one quarter. Excellent work.",
+      name: "Emily Carter",
+      role: "Marketing Manager",
+      rating: 4.8,
+    },
+    {
+      id: 4,
+      text: "Highly recommend! Professional, fast, and the final product exceeded all expectations.",
+      name: "David Wilson",
+      role: "Project Lead",
+      rating: 4.9,
+    },
   ]
 
 
@@ -448,8 +479,39 @@ const Index = () => {
           </div>
         </div>
 
-        <div>
+        <div className="w-full lg:w-1/2 border-l border-white ps-10">
+          <Splide
+            options={{
+              type: "fade",
+              rewind: true,
+              autoplay: true,
+              interval: 4000,
+              pauseOnHover: true,
+              arrows: false,
+              pagination: false,
+              speed: 800,
+            }}
+          >
+            {testimonials.map((t) => (
+              <SplideSlide key={t.id}>
+                <div className="text-white">
+                  <p className="text-white text-2xl md:text-3xl max-w-2xl leading-tight mb-6 font-medium">
+                    {t.text}
+                  </p>
 
+                  <div>
+                    <h3 className="text-2xl md:text-3xl font-semibold">
+                      {t.name}
+                    </h3>
+
+                    <span className="text-gray-300">
+                      {t.role}
+                    </span>
+                  </div>
+                </div>
+              </SplideSlide>
+            ))}
+          </Splide>
         </div>
       </div>
     </>
