@@ -21,6 +21,15 @@ import CountUp from "../Components/CountUp"
 import blog1 from "../assets/blog_01.jpg"
 import blog2 from "../assets/blog_02.jpg"
 import blog3 from "../assets/blog_03.jpg"
+import brand1 from "../assets/brand1.png"
+import brand2 from "../assets/brand2.png"
+import brand3 from "../assets/brand3.png"
+import brand4 from "../assets/brand4.png"
+import brand5 from "../assets/brand5.png"
+import brand6 from "../assets/brand6.png"
+import brand7 from "../assets/brand7.png"
+
+
 
 
 const Index = () => {
@@ -154,7 +163,18 @@ const Index = () => {
       description: "Ambleton: The Most Important Element in Ad Creating",
       image: blog3,
     },
-  ]
+  ];
+
+  const brands = [
+    { id: 1, image: brand1, link: "https://www.google.com" },
+    { id: 2, image: brand2, link: "https://www.google.com" },
+    { id: 3, image: brand3, link: "https://www.google.com" },
+    { id: 4, image: brand4, link: "https://www.google.com" },
+    { id: 5, image: brand5, link: "https://www.google.com" },
+    { id: 6, image: brand6, link: "https://www.google.com" },
+    { id: 7, image: brand7, link: "https://www.google.com" },
+    { id: 8, image: brand1, link: "https://www.google.com" },
+  ];
 
 
   return (
@@ -749,15 +769,30 @@ const Index = () => {
       {/* Brand */}
       <div className="brand py-[8%] px-[2%] md:px-[8%] xl:px-[12%]">
         <div className="brand-conten w-full lg:w-[60%] mb-10">
-          <div>
-            <span className="text-black bg-primary px-2 py-3 font-semibold text-md sm:text-xl rounded-sm">
-              Fantastic and Premium Clients
-            </span>
+          <span className="text-black bg-primary px-2 py-3 font-semibold text-md sm:text-xl rounded-sm">
+            Fantastic and Premium Clients
+          </span>
 
-            <h2 className="text-4xl md:text-3xl lg:text-6xl font-semibold sm:max-w-5xl mt-5 leading-tight text-white">
-              We Have Had the Pleasure ofWorking with some Clients
-            </h2>
-          </div>
+          <h2 className="text-4xl md:text-3xl lg:text-6xl font-semibold sm:max-w-5xl mt-5 leading-tight text-white">
+            We Have Had the Pleasure ofWorking with some Clients
+          </h2>
+        </div>
+
+        <div className="brand-wrapper grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          {brands.map((brand) => (
+            <Link
+              key={brand.id}
+              to={brand.link}
+              className="brand-item flex cursor-pointer border border-gray-50/20 p-5 relative justify-center items-center"
+            >
+              <img
+                src={brand.image}
+                alt="Brand Image"
+                className="object-contain"
+              />
+              <span>View Website</span>
+            </Link>
+          ))}
         </div>
       </div>
     </>
