@@ -419,6 +419,39 @@ const Index = () => {
           ))}
         </div>
       </div>
+
+      {/* Testimonial */}
+      <div className="testimonial py-[8%] px-[2%] md:px-[8%] xl:px-[12%] flex flex-col lg:flex-row justify-between items-start gap-10">
+        <div className="tst-content w-full lg:w-1/2 text-white">
+          <h2 className="text-3xl sm:text-6xl font-semibold sm:max-w-3xl my-5 leading-tight text-white">
+            Testimonials
+          </h2>
+          <div className="font-normal text-xl flex items-center">
+            4.5{" "}
+            {Array.from({ length: 4 }).map((_, index) => (
+              <span key={index} className="flex text-yellow-400 ml-2">
+                <Icon
+                  icon="material-symbols:star"
+                  width="24"
+                  height="24"
+                  className="text-yellow-400"
+                />
+              </span>
+            ))}
+            <Icon
+              icon="material-symbols:star-half"
+              width="24"
+              height="24"
+              className="text-yellow-400"
+            />{" "}
+            rating from all clients
+          </div>
+        </div>
+
+        <div>
+
+        </div>
+      </div>
     </>
   )
 }
