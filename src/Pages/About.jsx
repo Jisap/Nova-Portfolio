@@ -21,6 +21,7 @@ import brand4 from "../assets/brand4.png"
 import brand5 from "../assets/brand5.png"
 import brand6 from "../assets/brand6.png"
 import brand7 from "../assets/brand7.png"
+import SectionBanner from "../Components/SectionBanner"
 
 const services = [
   {
@@ -137,36 +138,14 @@ const brands = [
 const About = () => {
   return (
     <>
-      <div className="section-banner h-[500px] bg-[#121212] px-[2%] md:px-[8%] xl:px-[12%] flex flex-col justify-end items-start text-white w-full">
-        <h2 className="text-5xl lg:text-7xl font-semibold w-full lg:max-w-2xl relative pb-3">
-          About Us
-          <span className="absolute hidden sm:flex top-0 right-35 w-10 h-10">
-            <img
-              src={title_icon}
-              alt="icon"
-              className="w-full h-full"
-            />
-          </span>
-        </h2>
-
-        <p className="border-b-2 w-full pb-10 border-gray-300">
-          Creative studio at the intersection of art, designand technology.
-        </p>
-
-        <ul className="flex gap-8 py-5">
-          <li>
-            <Link to="/index" className="font-normal text-white text-lg">
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link to="/about" className="font-normal text-white text-lg">
-              About us
-            </Link>
-          </li>
-        </ul>
-
-      </div>
+      <SectionBanner
+        title="About Us"
+        subtitle="Creative studio at the intersection of art, design and technology."
+        breadcrumbs={[
+          { label: "Home", path: "/index" },
+          { label: "About us", path: "/about" },
+        ]}
+      />
 
       <div className="about py-[20%] xl:py-[8%] px-[2%] md:px-[8%] xl:px-[12%] flex justify-between items-start lg:flex-row flex-col gap-10">
         <div className="about-content w-full lg:w-[60%]">
