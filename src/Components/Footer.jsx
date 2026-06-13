@@ -57,7 +57,46 @@ const Footer = () => {
           </div>
         </div>
 
-        <hr className="borer-gray-700 mb-6" />
+        <hr className="border-gray-700 mb-6" />
+
+        <div className="flex flex-col md:flex-row justify-between items-center gap-5">
+          <p className="text-gray-400 text-sm">
+            &copy; {new Date().getFullYear()} {" "} by {" "}
+            <span className="text-white">Nova</span>. All rights reserved.
+          </p>
+
+          <div className="flex gap-4">
+            <Link
+              to="#"
+              className="text-white border border-gray-500 rounded-full w-10 h-10 flex justify-center items-center hover:bg-white hover:text-black transition-all duration-300"
+            >
+              <Icon icon="mdi:facebook" width="22" height="22" />
+            </Link>
+
+            <Link
+              to="#"
+              className="text-white border border-gray-500 rounded-full w-10 h-10 flex justify-center items-center hover:bg-white hover:text-black transition-all duration-300"
+            >
+              <Icon icon="mdi:twitter" width="22" height="22" />
+            </Link>
+
+            <Link
+              to="#"
+              className="text-white border border-gray-500 rounded-full w-10 h-10 flex justify-center items-center hover:bg-white hover:text-black transition-all duration-300"
+            >
+              <Icon icon="mdi:instagram" width="22" height="22" />
+            </Link>
+
+            <Link
+              to="#"
+              className="text-white border border-gray-500 rounded-full w-10 h-10 flex justify-center items-center hover:bg-white hover:text-black transition-all duration-300"
+            >
+              <Icon icon="mdi:linkedin" width="22" height="22" />
+            </Link>
+          </div>
+
+
+        </div>
       </div>
     </div>
   )
