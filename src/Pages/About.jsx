@@ -230,7 +230,7 @@ const About = () => {
         </ul>
       </div>
 
-      <div className="service py-[2%] md:px-[8%] xl:px-[12%]">
+      <div className="service py-[2%] px-[2%] md:px-[8%] xl:px-[12%]">
         <div className="service-content">
           <span className="text-black bg-primary px-2 py-3 font-semibold text-md sm:text-xl rounded-sm">
             What we do
