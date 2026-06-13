@@ -13,6 +13,14 @@ import team1 from "../assets/team-01.png"
 import team2 from "../assets/team-02.png"
 import team3 from "../assets/team-03.png"
 import team4 from "../assets/team-04.png"
+import { Splide, SplideSlide } from "@splidejs/react-splide"
+import brand1 from "../assets/brand1.png"
+import brand2 from "../assets/brand2.png"
+import brand3 from "../assets/brand3.png"
+import brand4 from "../assets/brand4.png"
+import brand5 from "../assets/brand5.png"
+import brand6 from "../assets/brand6.png"
+import brand7 from "../assets/brand7.png"
 
 const services = [
   {
@@ -82,6 +90,48 @@ const members = [
     img: team4,
     letter: "S"
   },
+];
+
+const testimonials = [
+  {
+    id: 1,
+    text: "Their high level of customer service. Always available and quick to respond. They exceeded all expectations.",
+    name: "Jessica Brown",
+    role: "Design Quality",
+    rating: 4.5,
+  },
+  {
+    id: 2,
+    text: "Working with them was seamless. They understood our vision and brought it to life perfectly. I will work with them again.",
+    name: "Mark Johnson",
+    role: "Creative Director",
+    rating: 5.0,
+  },
+  {
+    id: 3,
+    text: "The results speak for themselves. Our engagement increased by 300% in just one quarter. Excellent work.",
+    name: "Emily Carter",
+    role: "Marketing Manager",
+    rating: 4.8,
+  },
+  {
+    id: 4,
+    text: "Highly recommend! Professional, fast, and the final product exceeded all expectations.",
+    name: "David Wilson",
+    role: "Project Lead",
+    rating: 4.9,
+  },
+];
+
+const brands = [
+  { id: 1, image: brand1, link: "https://www.google.com" },
+  { id: 2, image: brand2, link: "https://www.google.com" },
+  { id: 3, image: brand3, link: "https://www.google.com" },
+  { id: 4, image: brand4, link: "https://www.google.com" },
+  { id: 5, image: brand5, link: "https://www.google.com" },
+  { id: 6, image: brand6, link: "https://www.google.com" },
+  { id: 7, image: brand7, link: "https://www.google.com" },
+  { id: 8, image: brand1, link: "https://www.google.com" },
 ];
 
 const About = () => {
@@ -364,6 +414,98 @@ const About = () => {
                 <span>{member.letter}</span>
               </div>
             </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="testimonial py-[8%] px-[2%] md:px-[8%] xl:px-[12%] flex flex-col lg:flex-row justify-between items-start gap-10">
+        <div className="tst-content w-full lg:w-1/2 text-white">
+          <h2 className="text-3xl sm:text-6xl font-semibold sm:max-w-3xl my-5 leading-tight text-white">
+            Testimonials
+          </h2>
+          <div className="font-normal text-xl flex items-center">
+            4.5{" "}
+            {Array.from({ length: 4 }).map((_, index) => (
+              <span key={index} className="flex text-yellow-400 ml-2">
+                <Icon
+                  icon="material-symbols:star"
+                  width="24"
+                  height="24"
+                  className="text-yellow-400"
+                />
+              </span>
+            ))}
+            <Icon
+              icon="material-symbols:star-half"
+              width="24"
+              height="24"
+              className="text-yellow-400"
+            />{" "}
+            rating from all clients
+          </div>
+        </div>
+
+        <div className="w-full lg:w-1/2 border-l border-white ps-10">
+          <Splide
+            options={{
+              type: "fade",
+              rewind: true,
+              autoplay: true,
+              interval: 4000,
+              pauseOnHover: true,
+              arrows: false,
+              pagination: false,
+              speed: 800,
+            }}
+          >
+            {testimonials.map((t) => (
+              <SplideSlide key={t.id}>
+                <div className="text-white">
+                  <p className="text-white text-2xl md:text-3xl max-w-2xl leading-tight mb-6 font-medium">
+                    {t.text}
+                  </p>
+
+                  <div>
+                    <h3 className="text-2xl md:text-3xl font-semibold">
+                      {t.name}
+                    </h3>
+
+                    <span className="text-gray-300">
+                      {t.role}
+                    </span>
+                  </div>
+                </div>
+              </SplideSlide>
+            ))}
+          </Splide>
+        </div>
+      </div>
+
+      <div className="brand py-[8%] px-[2%] md:px-[8%] xl:px-[12%]">
+        <div className="brand-conten w-full lg:w-[60%] mb-10">
+          <span className="text-black bg-primary px-2 py-3 font-semibold text-md sm:text-xl rounded-sm">
+            Fantastic and Premium Clients
+          </span>
+
+          <h2 className="text-4xl md:text-3xl lg:text-6xl font-semibold sm:max-w-5xl mt-5 leading-tight text-white">
+            We Have Had the Pleasure ofWorking with some Clients
+          </h2>
+        </div>
+
+        <div className="brand-wrapper grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          {brands.map((brand) => (
+            <Link
+              key={brand.id}
+              to={brand.link}
+              className="brand-item flex cursor-pointer border border-gray-50/20 p-5 relative justify-center items-center"
+            >
+              <img
+                src={brand.image}
+                alt="Brand Image"
+                className="object-contain"
+              />
+              <span>View Website</span>
+            </Link>
           ))}
         </div>
       </div>
