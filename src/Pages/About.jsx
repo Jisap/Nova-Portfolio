@@ -159,7 +159,33 @@ const About = () => {
             </div>
           </div>
         </div>
+
+        <ul className="flex flex-col gap-5 mt-20 relative">
+          <li className="w-full flex items-start justify-between lg:flex-row flex-col">
+            <span className="w-full lg:w-3xl font-semibold text-2xl text-white">
+              Our Mission
+            </span>
+
+            <p className="w-full lg:w-[90%] xl:w-[80%] text-md sm:text-xl mt-2 text-gray-300">
+              From the moment our company was founded we have helped our clients find exceptional
+              solutions for their bussinesses memorable brands and digital products. Our expertise grows
+              with each year, and our accumulated experience. helps us approach new challenges with confidence and creativity.
+            </p>
+          </li>
+          <li className="w-full flex items-start justify-between lg:flex-row flex-col">
+            <span className="w-full lg:w-3xl font-semibold text-2xl text-white">
+              Our Goal
+            </span>
+
+            <p className="w-full lg:w-[90%] xl:w-[80%] text-md sm:text-xl my-2 text-gray-300">
+              Our goal is to deliver amazing experiences thar make people talk, and build
+              strategic value for brands, tech, entertainment, arts & culture.
+            </p>
+          </li>
+        </ul>
       </div>
+
+
     </>
   )
 }
