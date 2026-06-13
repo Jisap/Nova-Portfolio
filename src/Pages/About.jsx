@@ -117,6 +117,49 @@ const About = () => {
           </p>
         </div>
       </div>
+
+      <div className="w-full py-[8%] px-[2%] md:px-[8%] xl:px-[12%]">
+        <div className="banner bg-cover object-bottom bg-center h-[800px] relative">
+          <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center z-10">
+            <div className="flex items-center justify-center w-[250px] h-[250px] relative border border-white rounded-full">
+              <svg
+                viewBox="0 0 300 300"
+                className="absolute w-full h-full animate-[spin_20s_linear_infinite]"
+              >
+                <defs>
+                  <path
+                    id="circlePath"
+                    d="M150,150 m-120,0 a120,120 0 1,1 240,0 a120,120 0 1,1 -240,0"
+                  />
+                </defs>
+
+                <text
+                  fill="#fff"
+                  fontSize="16"
+                  fontWeight="600"
+                  letterSpacing="0"
+                  textLength="1000"
+                >
+                  <textPath href="#circlePath" staroffset="0" textLength="754" lengthAdjust="spacing">
+                    - PLAY VIDEO - PLAY VIDEO - PLAY VIDEO -
+                  </textPath>
+                </text>
+              </svg>
+
+              <div className="border border-white rounded-[50%]">
+                <div className="roudned-full p-6 flex items-center justify-center">
+                  <Icon
+                    icon="ri:play-fill"
+                    width="70"
+                    height="70"
+                    className="text-white"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   )
 }
