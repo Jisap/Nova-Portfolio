@@ -3,6 +3,12 @@ import { teamMembers } from "./Team";
 import { useEffect } from "react";
 import SectionBanner from "../Components/SectionBanner";
 import { Icon } from "@iconify/react";
+import ServiceItem from "../Components/ServiceItem";
+import serviceicon1 from "../assets/service-icon1.png"
+import serviceicon2 from "../assets/service-icon2.png"
+import serviceicon3 from "../assets/service-icon3.png"
+import serviceicon4 from "../assets/service-icon4.png"
+import serviceicon5 from "../assets/service-icon5.png"
 
 const expertiseHighlights = [
   {
@@ -25,6 +31,45 @@ const expertiseHighlights = [
     text: "Interest discretion estimating on stimulated.",
     icon: "mdi:check-decagram-outline",
   },
+];
+
+const services = [
+  {
+    number: "01.",
+    title: "Brand Strategy",
+    description:
+      "We work with you to understand your business goals and craft strategies that deliver measurable results. Our approach combines creativity, technology, and market insights to help you stand out.",
+    icon: serviceicon1,
+  },
+  {
+    number: "02.",
+    title: "UI / UX Design",
+    description:
+      "We design intuitive interfaces and meaningful experiences that connect brands with their audiences across every touchpoint.",
+    icon: serviceicon2,
+  },
+  {
+    number: "03.",
+    title: "Web Development",
+    description:
+      "We build fast, scalable and accessible web products using modern stacks, clean architecture and a strong attention to detail.",
+    icon: serviceicon3,
+  },
+  {
+    number: "04.",
+    title: "Motion & Branding",
+    description:
+      "We bring brands to life through motion design, micro-interactions and visual systems crafted to feel alive and consistent.",
+    icon: serviceicon4,
+  },
+  {
+    number: "05.",
+    title: "Creative Direction",
+    description:
+      "We guide the creative process end-to-end, aligning concept, design and storytelling with the goals of your business.",
+    icon: serviceicon5,
+  },
+
 ];
 
 
@@ -124,13 +169,6 @@ const TeamDetails = () => {
           areas of your business if needed.
         </p>
 
-        {/* <ul className="text-white/80 pt-5 ps-5 space-y-3 list-disc">
-          <li>Far curiosity incommode now led smallness allowance.</li>
-          <li>Favour bed assure son things yet.</li>
-          <li>She consisted consulted elsewhere happiness.</li>
-          <li>Window donws you new shade drift hopes small.</li>
-          <li>Interest discretion estimating on stimulated.</li>
-        </ul> */}
         <ul className="pt-5 grid grid-cols-1 md:grid-cols-2 gap-5 mt-10">
           {expertiseHighlights.map((item, index) => (
             <li
@@ -147,6 +185,31 @@ const TeamDetails = () => {
             </li>
           ))}
         </ul>
+      </div>
+
+      {/* Service  */}
+      <div className="service py-[2%] px-[2%] md:px-[8%] xl:px-[12%]">
+        <div className="service-content">
+          <span className="text-black bg-primary px-2 py-3 font-semibold text-md sm:text-xl rounded-sm">
+            What we do
+          </span>
+
+          <h2 className="text-3xl sm:text-6xl font-semibold max-w-3xl my-10 leading-tight mt-5 text-white">
+            We're a full-service agency.
+          </h2>
+        </div>
+
+        <div className="flex flex-col w-full mt-8">
+          {services.map((service) => (
+            <ServiceItem
+              key={service.number}
+              number={service.number}
+              title={service.title}
+              description={service.description}
+              icon={service.icon}
+            />
+          ))}
+        </div>
       </div>
     </>
   )
