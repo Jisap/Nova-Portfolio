@@ -9,6 +9,10 @@ import serviceicon2 from "../assets/service-icon2.png"
 import serviceicon3 from "../assets/service-icon3.png"
 import serviceicon4 from "../assets/service-icon4.png"
 import serviceicon5 from "../assets/service-icon5.png"
+import project1 from "../assets/project-01.jpg"
+import project2 from "../assets/project-02.jpg"
+import project3 from "../assets/project-03.jpg"
+import project5 from "../assets/project-05.jpg"
 
 const expertiseHighlights = [
   {
@@ -70,6 +74,33 @@ const services = [
     icon: serviceicon5,
   },
 
+];
+
+const projectsDetails = [
+  {
+    id: 1,
+    image: project1,
+    category: "Branding",
+    title: "Museums Art Concept",
+  },
+  {
+    id: 2,
+    image: project2,
+    category: "Marketing",
+    title: "Market Economy Graphics",
+  },
+  {
+    id: 3,
+    image: project3,
+    category: "Design",
+    title: "Headphones 3D Rendering",
+  },
+  {
+    id: 4,
+    image: project5,
+    category: "Design",
+    title: "Business Card Logo",
+  },
 ];
 
 
@@ -208,6 +239,45 @@ const TeamDetails = () => {
               description={service.description}
               icon={service.icon}
             />
+          ))}
+        </div>
+      </div>
+
+      {/* Featured projects */}
+      <div className="featured py-[8%] px-[2%] md:px-[8%] xl:px-[12%]">
+        <div className="featured-conten w-full flex justify-between flex-col lg:flex-row lg:items-end mb-10">
+          <div>
+            <span className="text-black bg-primary px-2 py-3 font-semibold text-md sm:text-xl rounded-sm">
+              Featured Projects
+            </span>
+
+            <h2 className="text-2xl sm:text-6xl font-semibold sm:max-w-3xl mt-5 leagin-tight text-white">
+              Studio Showcase
+            </h2>
+          </div>
+
+          <Link to="/projects" className="btn rounded-sm mt-4 w-fit">
+            <Icon icon="vaadin:plus" width="30" height="30" />
+            <span>More Projects</span>
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 xl:grid-cols-2 text-white gap-10 w-full lg:w-[90%] xl:w-full">
+          {projectsDetails.map((project) => (
+            <div className="border-gray-300/20 border p-5 rounded-lg group">
+              <div className="h-[550px] w-full rounded-lg overflow-hidden mb-5">
+                <img
+                  src={project.image}
+                  alt="project1"
+                  className="w-full h-full group-hover:scale-110 object-cover transition-all duration-300"
+                />
+              </div>
+
+              <Link to="/projects">
+                <span className="text-white border border-gray-50/20 px-2 py-1 font-semibold text-lg">{project.category}</span>
+                <h3 className="text-2xl sm:text-4xl font-semibold mt-2 hover:text-primary duration-300">{project.title}</h3>
+              </Link>
+            </div>
           ))}
         </div>
       </div>
