@@ -6,8 +6,10 @@ import serviceicon2 from "../assets/service-icon2.png"
 import serviceicon3 from "../assets/service-icon3.png"
 import serviceicon4 from "../assets/service-icon4.png"
 import serviceicon5 from "../assets/service-icon5.png"
+import ServiceItem from "../Components/ServiceItem"
+import { Link } from "react-router-dom"
 
-const services = [
+const servicesPage = [
   {
     id: 1,
     name: "Brand Creation",
@@ -46,6 +48,45 @@ const services = [
   },
 ]
 
+const services = [
+  {
+    number: "01.",
+    title: "Brand Strategy",
+    description:
+      "We work with you to understand your business goals and craft strategies that deliver measurable results. Our approach combines creativity, technology, and market insights to help you stand out.",
+    icon: serviceicon1,
+  },
+  {
+    number: "02.",
+    title: "UI / UX Design",
+    description:
+      "We design intuitive interfaces and meaningful experiences that connect brands with their audiences across every touchpoint.",
+    icon: serviceicon2,
+  },
+  {
+    number: "03.",
+    title: "Web Development",
+    description:
+      "We build fast, scalable and accessible web products using modern stacks, clean architecture and a strong attention to detail.",
+    icon: serviceicon3,
+  },
+  {
+    number: "04.",
+    title: "Motion & Branding",
+    description:
+      "We bring brands to life through motion design, micro-interactions and visual systems crafted to feel alive and consistent.",
+    icon: serviceicon4,
+  },
+  {
+    number: "05.",
+    title: "Creative Direction",
+    description:
+      "We guide the creative process end-to-end, aligning concept, design and storytelling with the goals of your business.",
+    icon: serviceicon5,
+  },
+
+];
+
 const Services = () => {
   return (
     <>
@@ -59,7 +100,7 @@ const Services = () => {
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-14 py-[8%] px-[2%] md:px-[8%] xl:px-[12%] overflow-x-hidden">
-        {services.map((service) => (
+        {servicesPage.map((service) => (
           <div className="ser-item border border-gray-50/20 text-center rounded-sm relative" key={service.id}>
             <div className="image bg-primary mx-auto w-30 h-30 md:w-40 md:h-40 p-8 rounded-full transform -translate-y-8 md:-translate-y-14">
               <img
@@ -197,6 +238,123 @@ const Services = () => {
             </p>
           </li>
         </ul>
+      </div>
+
+      <div className="service py-[2%] px-[2%] md:px-[8%] xl:px-[12%]">
+        <div className="service-content">
+          <span className="text-black bg-primary px-2 py-3 font-semibold text-md sm:text-xl rounded-sm">
+            What we do
+          </span>
+
+          <h2 className="text-3xl sm:text-6xl font-semibold max-w-3xl my-10 leading-tight mt-5 text-white">
+            We're a full-service agency.
+          </h2>
+        </div>
+
+        <div className="flex flex-col w-full mt-8">
+          {services.map((service) => (
+            <ServiceItem
+              key={service.number}
+              number={service.number}
+              title={service.title}
+              description={service.description}
+              icon={service.icon}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Get in touch */}
+      <div className="py-[8%]">
+        <div className="contact py-[8%] px-[2%] md:px-[8%] xl:px-[12%] h-[800px] relative">
+          <div className="team-conten w-full lg:w-[60%] mb-10">
+            <div>
+              <span className="text-black bg-primary px-2 py-3 font-semibold text-md sm:text-xl rounded-sm">
+                Get in Touch
+              </span>
+
+              <h2 className="text-2xl sm:text-6xl font-semibold sm:max-w-3xl mt-5 leading-tight text-white">
+                Send Us Your Bright Ideas
+              </h2>
+
+              <Link to="/contact" className="text-primary text-3xl lg:text-5xl font-semibold">
+                Info@yourcompany.com
+              </Link>
+
+              <p className="text-gray-100 text-xl pt-5">
+                123 Business Avenue, Los Angeles
+              </p>
+            </div>
+
+            <div className="contact-image">
+              <div className="cat-img-circle img-circle--1"></div>
+              <div className="cat-img-circle img-circle--2"></div>
+              <div className="cat-img-circle img-circle--3"></div>
+
+              <ul className="text-white grid grid-cols-2 gap-10 absolute right-0 bottom-60 social-icons">
+                <li>
+                  <Link to="/" className="social-icon relative overflow-hidden p-10 text-xl font-bold h-[100px] rounded-full bg-black flex gap-8 items-center">
+                    <Icon
+                      icon="ri:facebook-fill"
+                      width="44"
+                      height="44"
+                      className="text-black bg-white p-2 rounded-full"
+                    />
+
+                    <span>
+                      Facebook
+                    </span>
+                  </Link>
+                </li>
+
+                <li>
+                  <Link to="/" className="social-icon relative overflow-hidden p-10 text-xl font-bold h-[100px] rounded-full bg-black flex gap-8 items-center">
+                    <Icon
+                      icon="iconoir:instagram"
+                      width="44"
+                      height="44"
+                      className="text-black bg-white p-2 rounded-full"
+                    />
+
+                    <span>
+                      Instagram
+                    </span>
+                  </Link>
+                </li>
+
+                <li>
+                  <Link to="/" className="social-icon relative overflow-hidden p-10 text-xl font-bold h-[100px] rounded-full bg-black flex gap-8 items-center">
+                    <Icon
+                      icon="line-md:twitter-x"
+                      width="44"
+                      height="44"
+                      className="text-black bg-white p-2 rounded-full"
+                    />
+
+                    <span>
+                      Twitter / X
+                    </span>
+                  </Link>
+                </li>
+
+                <li>
+                  <Link to="/" className="social-icon relative overflow-hidden p-10 text-xl font-bold h-[100px] rounded-full bg-black flex gap-8 items-center">
+                    <Icon
+                      icon="ri:linkedin-fill"
+                      width="44"
+                      height="44"
+                      className="text-black bg-white p-2 rounded-full"
+                    />
+
+                    <span>
+                      Linkedin
+                    </span>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   )
