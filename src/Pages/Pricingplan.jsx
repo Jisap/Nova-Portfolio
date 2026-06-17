@@ -40,7 +40,7 @@ const plans = [
       { text: "Unlimited updates", active: true },
       { text: "Custom permissions", active: true },
       { text: "Custom infraestructure", active: true },
-      { text: "Custom design and features", active: false }
+      { text: "Custom design and features", active: true }
     ]
   }
 ]
@@ -92,6 +92,99 @@ const Pricingplan = () => {
             </div>
           </div>
         ))}
+      </div>
+
+      {/* Get in touch */}
+      <div className="py-[2%]">
+        <div className="contact py-[8%] px-[2%] md:px-[8%] xl:px-[12%] h-[800px] relative">
+          <div className="team-conten w-full lg:w-[60%] mb-10">
+            <div>
+              <span className="text-black bg-primary px-2 py-3 font-semibold text-md sm:text-xl rounded-sm">
+                Get in Touch
+              </span>
+
+              <h2 className="text-2xl sm:text-6xl font-semibold sm:max-w-3xl mt-5 leading-tight text-white">
+                Send Us Your Bright Ideas
+              </h2>
+
+              <Link to="/contact" className="text-primary text-3xl lg:text-5xl font-semibold">
+                Info@yourcompany.com
+              </Link>
+
+              <p className="text-gray-100 text-xl pt-5">
+                123 Business Avenue, Los Angeles
+              </p>
+            </div>
+
+            <div className="contact-image">
+              <div className="cat-img-circle img-circle--1"></div>
+              <div className="cat-img-circle img-circle--2"></div>
+              <div className="cat-img-circle img-circle--3"></div>
+
+              <ul className="text-white grid grid-cols-2 gap-10 absolute right-0 bottom-60 social-icons">
+                <li>
+                  <Link to="/" className="social-icon relative overflow-hidden p-10 text-xl font-bold h-[100px] rounded-full bg-black flex gap-8 items-center">
+                    <Icon
+                      icon="ri:facebook-fill"
+                      width="44"
+                      height="44"
+                      className="text-black bg-white p-2 rounded-full"
+                    />
+
+                    <span>
+                      Facebook
+                    </span>
+                  </Link>
+                </li>
+
+                <li>
+                  <Link to="/" className="social-icon relative overflow-hidden p-10 text-xl font-bold h-[100px] rounded-full bg-black flex gap-8 items-center">
+                    <Icon
+                      icon="iconoir:instagram"
+                      width="44"
+                      height="44"
+                      className="text-black bg-white p-2 rounded-full"
+                    />
+
+                    <span>
+                      Instagram
+                    </span>
+                  </Link>
+                </li>
+
+                <li>
+                  <Link to="/" className="social-icon relative overflow-hidden p-10 text-xl font-bold h-[100px] rounded-full bg-black flex gap-8 items-center">
+                    <Icon
+                      icon="line-md:twitter-x"
+                      width="44"
+                      height="44"
+                      className="text-black bg-white p-2 rounded-full"
+                    />
+
+                    <span>
+                      Twitter / X
+                    </span>
+                  </Link>
+                </li>
+
+                <li>
+                  <Link to="/" className="social-icon relative overflow-hidden p-10 text-xl font-bold h-[100px] rounded-full bg-black flex gap-8 items-center">
+                    <Icon
+                      icon="ri:linkedin-fill"
+                      width="44"
+                      height="44"
+                      className="text-black bg-white p-2 rounded-full"
+                    />
+
+                    <span>
+                      Linkedin
+                    </span>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </>
 
