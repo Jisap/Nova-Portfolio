@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SectionBanner from "../Components/SectionBanner"
+import { Icon } from "@iconify/react";
 
 const faqs = [
   {
@@ -59,12 +60,45 @@ const Faq = () => {
           <div key={index} className="overflow-hidden transition-all duration-500 mb-5">
             <button
               onClick={() => toggleFAQ(index)}
-              className={`w-full flex items-center cursor-pointer justify-between px-8 py-6 text-lg font-semibold border-2 rounded-full transition-all duration-700
-                ${openIndex === index ? "bg-line-400 border-lime-400 text-black" : "border-gray-300 text-white hover:border-lime-300"}   
+              className={`
+                w-full flex items-center cursor-pointer justify-between px-8 py-6 text-lg font-semibold border-2 rounded-full transition-all duration-700
+                ${openIndex === index
+                  ? "bg-lime-400 border-lime-400 text-black"
+                  : "border-gray-300 text-white hover:border-lime-300"
+                }   
               `}
             >
               <span>{faq.question}</span>
+              <span className={`
+                flex items-center justify-center w-10 h-10 rounded-full transition-transform duration-700
+                ${openIndex === index
+                  ? "bg-black text-white rotate-180"
+                  : "bg-gray-100 text-black"
+                }
+                `}
+              >
+                <Icon icon={
+                  openIndex === index
+                    ? "mdi:chevron-up"
+                    : "mdi:chevron-down"
+                } className="text-xl"
+                />
+              </span>
             </button>
+
+            <div className={`
+              overflow-hidden transition-all duration-700 ease-in-out
+              ${openIndex === index
+                ? "max-h-60 opacity-100 mt-4"
+                : "max-h-o opacity-0"
+              }  
+            `}
+            >
+              <p className="px-8 pb-4 text-gray-300 leading-relaxed">
+                {faq.answer}
+              </p>
+
+            </div>
           </div>
         ))}
       </div>
