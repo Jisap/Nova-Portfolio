@@ -7,6 +7,7 @@ import About from './Pages/About'
 import Team from './Pages/Team'
 import TeamDetails from './Pages/TeamDetails'
 import Services from './Pages/Services'
+import Pricingplan from './Pages/Pricingplan'
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
             <Route path="/team" element={<Team />} />
             <Route path="/team/:id" element={<TeamDetails />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/pricingplan" element={<Pricingplan />} />
           </Routes>
           <Footer />
         </BrowserRouter>
