@@ -1,3 +1,4 @@
+import { useState } from "react";
 import SectionBanner from "../Components/SectionBanner"
 
 const faqs = [
@@ -36,6 +37,12 @@ const faqs = [
 ];
 
 const Faq = () => {
+
+  const [openIndex, setOpenIndex] = useState(0);
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? null : index)
+  }
+
   return (
     <>
       <SectionBanner
@@ -46,6 +53,21 @@ const Faq = () => {
           { label: "Client FAQs", path: "/faq" }
         ]}
       />
+
+      <div className="faq px-[2%] md:px-[8%] xl:px-[12%] py-[8%]">
+        {faqs.map((faq, index) => (
+          <div key={index} className="overflow-hidden transition-all duration-500 mb-5">
+            <button
+              onClick={() => toggleFAQ(index)}
+              className={`w-full flex items-center cursor-pointer justify-between px-8 py-6 text-lg font-semibold border-2 rounded-full transition-all duration-700
+                ${openIndex === index ? "bg-line-400 border-lime-400 text-black" : "border-gray-300 text-white hover:border-lime-300"}   
+              `}
+            >
+              <span>{faq.question}</span>
+            </button>
+          </div>
+        ))}
+      </div>
     </>
   )
 }
