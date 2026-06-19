@@ -9,6 +9,7 @@ import TeamDetails from './Pages/TeamDetails'
 import Services from './Pages/Services'
 import Pricingplan from './Pages/Pricingplan'
 import Faq from './Pages/Faq'
+import Projects from './Pages/Projects'
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/pricingplan" element={<Pricingplan />} />
             <Route path="/faq" element={<Faq />} />
+            <Route path="/projects" element={<Projects />} />
           </Routes>
           <Footer />
         </BrowserRouter>
