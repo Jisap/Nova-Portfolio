@@ -204,14 +204,17 @@ const Projects = () => {
           <p className="text-sm tracking-widest uppercase text-gray-500 mb-2">Portfolio</p>
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <h2 className="text-4xl font-semibold text-white">Selected Work</h2>
-            <span className="text-gray-500 text-sm">{filteredData.length} project{filteredData.length !== 1 ? 's' : ''}</span>
+
+            <span className="text-gray-500 text-sm">
+              {filteredData.length} project{filteredData.length !== 1 ? 's' : ''}
+            </span>
           </div>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-12">
 
           {/* Sidebar */}
-          <aside className="lg:w-[180px] flex-shrink-0">
+          <aside className="lg:w-[180px] shrink-0">
             <p className="text-[10px] tracking-[0.12em] uppercase text-gray-600 mb-5">Filter by</p>
             <ul className="space-y-1">
               {categories.map((category) => (
@@ -282,9 +285,10 @@ const Projects = () => {
                   {/* Meta */}
                   <div className="px-5 py-4 border-t border-white/5 flex items-center justify-between">
                     <div>
-                      <p className="text-[10px] tracking-[0.1em] uppercase text-gray-600 mb-1">
+                      <p className="text-[10px] tracking-widest uppercase text-gray-600 mb-1">
                         {project.category}
                       </p>
+
                       <h3 className="text-white text-sm font-medium leading-snug">
                         {project.title}
                       </h3>

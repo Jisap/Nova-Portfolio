@@ -4,9 +4,9 @@ import title_icon from "../assets/title_icon.svg"
 const SectionBanner = ({ title, subtitle, breadcrumbs }) => {
     return (
         <div className="section-banner h-[500px] bg-[#121212] px-[2%] md:px-[8%] xl:px-[12%] flex flex-col justify-end items-start text-white w-full">
-            <h2 className="text-5xl lg:text-7xl font-semibold w-full lg:max-w-2xl relative pb-3">
-                {title}
-                <span className="absolute hidden sm:flex top-0 right-35 w-10 h-10">
+            <h2 className="text-5xl lg:text-7xl font-semibold w-full lg:max-w-2xl flex items-start justify-between gap-6 pb-3">
+                <span>{title}</span>
+                <span className="hidden sm:flex shrink-0 w-10 h-10 mt-2">
                     <img src={title_icon} alt="icon" className="w-full h-full" />
                 </span>
             </h2>
