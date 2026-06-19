@@ -277,6 +277,7 @@ const Projects = () => {
                         <span className="text-[10px] tracking-widest uppercase text-white/70 block mb-1">
                           {project.category}
                         </span>
+
                         <span className="text-white font-medium text-lg">{project.title}</span>
                       </div>
                     </div>

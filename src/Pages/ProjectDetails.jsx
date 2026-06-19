@@ -180,9 +180,11 @@ const ProjectDetails = () => {
               <span className="inline-block text-sm md:text-base text-white/90 font-semibold tracking-wider uppercase mb-3 bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1 rounded-full">
                 {project.category}
               </span>
+
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight drop-shadow-xl">
                 {project.title}
               </h1>
+
               <p className="text-gray-200 text-base md:text-lg mt-3 max-w-xl drop-shadow-md">
                 Creative studio at the intersection of art, design & technology.
               </p>
