@@ -163,8 +163,8 @@ const ProjectDetails = () => {
       />
 
       {/* 🖼️ HERO CON TÍTULO SUPERPUESTO */}
-      <div className="px-4 sm:px-6 lg:px-8 bg-[#0a0a0a]">
-        <div className="max-w-7xl mx-auto -mt-8">
+      <div className="px-4 sm:px-6 lg:px-8 ">
+        <div className="max-w-7xl mx-auto mt-8">
           <div className="relative w-full h-[400px] md:h-[550px] lg:h-[650px] overflow-hidden rounded-2xl shadow-2xl group">
             <img
               src={project.image}

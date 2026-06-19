@@ -11,6 +11,8 @@ import Pricingplan from './Pages/Pricingplan'
 import Faq from './Pages/Faq'
 import Projects from './Pages/Projects'
 import ProjectDetails from './Pages/ProjectDetails'
+import BlogDetails from './Pages/BlogDetails'
+import Blog from './Pages/Blog'
 
 function App() {
 
@@ -29,6 +31,8 @@ function App() {
             <Route path="/faq" element={<Faq />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/:id" element={<ProjectDetails />} />
+            <Route path="/blogs" element={<Blog />} />
+            <Route path="/blog/:id" element={<BlogDetails />} />
           </Routes>
           <Footer />
         </BrowserRouter>
