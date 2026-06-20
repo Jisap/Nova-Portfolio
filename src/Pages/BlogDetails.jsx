@@ -3,6 +3,17 @@ import { useNavigate, useParams } from "react-router-dom";
 import { blogs } from "./Blog";
 import SectionBanner from "../Components/SectionBanner";
 
+import post1 from "../assets/blogpost01.jpg"
+import post2 from "../assets/blogpost02.jpg"
+import post3 from "../assets/blogpost03.jpg"
+
+
+const posts = [
+  { id: 1, title: "The Power of Teamwork: Why Collaboration Matters in Design", date: "April 10, 2025", image: post1 },
+  { id: 2, title: "10 Tips for Creating Outstanding Marketing Campaigns", date: "May 22, 2025", image: post2 },
+  { id: 3, title: "Effective Copywriting Strategies for Business Growth", date: "May 15, 2025", image: post3 }
+];
+
 
 const BlogDetails = () => {
   const { id } = useParams();
@@ -100,6 +111,22 @@ const BlogDetails = () => {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem distinctio eligendi eos ut dolore, impedit amet
           ab porro debitis ratione pariatur fugit dicta delectus officia assumenda iste voluptatum. Voluptatem, ratione!
         </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+          {posts.map((post) => (
+            <div
+              key={post.id}
+              className="blog-item group flex flex-col text-white"
+            >
+              <img
+                src={post.image}
+                alt={post.title}
+                className="w-full h-[200px] object-cover rounded-lg"
+              />
+              <p className="text-lg font-semibold mt-2">{post.title}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </>
   )
