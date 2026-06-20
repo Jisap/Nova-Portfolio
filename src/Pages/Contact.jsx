@@ -92,7 +92,7 @@ const Contact = () => {
             width="100%"
             height="100%"
             loading="lazy"
-            allowfullscreen
+            allowFullScreen
             title="Google Maps"
             style={{
               border: 0,
