@@ -5,7 +5,9 @@ import { Icon } from "@iconify/react"
 import ser1 from "../assets/serv-icon1.png"
 import ser2 from "../assets/serv-icon2.png"
 import ser3 from "../assets/serv-icon3.png"
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
+import { initScrollAnimations } from "../animations/scroll"
+
 import "@splidejs/react-splide/css";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
@@ -33,6 +35,14 @@ import brand7 from "../assets/brand7.png"
 
 
 const Index = () => {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      const ctx = initScrollAnimations(containerRef.current);
+      return () => ctx.revert();
+    }
+  }, []);
 
   const [activeIndex, setActiveIndex] = useState(1);
 
@@ -178,7 +188,7 @@ const Index = () => {
 
 
   return (
-    <>
+    <div ref={containerRef} className="overflow-x-hidden">
       {/* Hero */}
       <div className="h-screen w-full relative overflow-hidden">
         <video
@@ -193,12 +203,12 @@ const Index = () => {
       </div>
 
       {/* Services */}
-      <div className="services grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 py-[8%] px-[2%] md:px-[8%] xl:px-[12%]">
+      <div className="services grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 py-[8%] px-[2%] md:px-[8%] xl:px-[12%] gsap-stagger-container">
         {services.map((service, index) => (
           <div
             key={service.id}
             className={`
-              w-full text-center group rounded-full p-10 flex justify-center items-center flex-col relative service-item h-[450px] transition-all duration-300 
+              w-full text-center group rounded-full p-10 flex justify-center items-center flex-col relative service-item h-[450px] transition-all duration-300 gsap-stagger-item
               ${activeIndex === index ? "active bg-primary" : "bg-transparent"}  
             `}
             onMouseEnter={() => setActiveIndex(index)}
@@ -260,7 +270,7 @@ const Index = () => {
 
       {/* About */}
       <div className="about py-[8%] px-[2%] md:px-[8%] xl:px-[12%] flex justify-between items-start lg:flex-row flex-col gap-10">
-        <div className="about-content w-full lg:w-[60%]">
+        <div className="about-content w-full lg:w-[60%] gsap-fade-left">
           <span className="text-black bg-primary px-2 py-3 font-semibold text-md sm:text-xl rounded-sm">
             Welcome to Nova
           </span>
@@ -298,7 +308,7 @@ const Index = () => {
           </ul>
         </div>
 
-        <div className="w-full lg:w-[40%] flex justify-center items-center">
+        <div className="w-full lg:w-[40%] flex justify-center items-center gsap-fade-right">
           <div className="flex items-center justify-center w-[250px] h-[250px] relative border rounded-full">
             <svg
               viewBox="0 0 300 300"
@@ -376,7 +386,7 @@ const Index = () => {
 
       {/* Features Projects */}
       <div className="featured py-[8%] px-[2%] md:px-[8%] xl:px-[12%]">
-        <div className="featured-conten w-full flex justify-between flex-col lg:flex-row lg:items-end mb-10">
+        <div className="featured-conten w-full flex justify-between flex-col lg:flex-row lg:items-end mb-10 gsap-fade-up">
           <div>
             <span className="text-black bg-primary px-2 py-3 font-semibold text-md sm:text-xl rounded-sm">
               Featured Projects
@@ -393,11 +403,11 @@ const Index = () => {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 xl:grid-cols-2 text-white gap-10 w-full lg:w-[90%] xl:w-full">
+        <div className="grid grid-cols-1 xl:grid-cols-2 text-white gap-10 w-full lg:w-[90%] xl:w-full gsap-stagger-container">
           {projects.map((item) => (
             <div
               key={item.id}
-              className="border border-gray-300/20 p-5 rounded-lg group"
+              className="border border-gray-300/20 p-5 rounded-lg group gsap-stagger-item"
             >
               <div className="h-[550px] w-full rounded-lg overflow-hidden mb-5 cursor-pointer">
                 <img
@@ -423,7 +433,7 @@ const Index = () => {
 
       {/* Team */}
       <div className="team py-[8%] px-[2%] md:px-[8%] xl:px-[12%]">
-        <div className="team-conten w-full lg:w-[60%] mb-10">
+        <div className="team-conten w-full lg:w-[60%] mb-10 gsap-fade-up">
           <div>
             <span className="text-black bg-primary px-2 py-3 font-semibold text-md sm:text-xl rounded-sm">
               Experts Team Members
@@ -435,11 +445,11 @@ const Index = () => {
           </div>
         </div>
 
-        <div className="team-wrapper grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 ">
+        <div className="team-wrapper grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gsap-stagger-container">
           {members.map((member) => (
             <div
               key={member.id}
-              className="team-item relative overflow-hidden text-white border border-gray-50/20 h-[600px] md:h-[740px] group flex flex-col justify-between"
+              className="team-item relative overflow-hidden text-white border border-gray-50/20 h-[600px] md:h-[740px] group flex flex-col justify-between gsap-stagger-item"
             >
               {/* Description */}
               <div className="desc p-6 md:p-8">
@@ -505,7 +515,7 @@ const Index = () => {
 
       {/* Testimonial */}
       <div className="testimonial py-[8%] px-[2%] md:px-[8%] xl:px-[12%] flex flex-col lg:flex-row justify-between items-start gap-10">
-        <div className="tst-content w-full lg:w-1/2 text-white">
+        <div className="tst-content w-full lg:w-1/2 text-white gsap-fade-left">
           <h2 className="text-3xl sm:text-6xl font-semibold sm:max-w-3xl my-5 leading-tight text-white">
             Testimonials
           </h2>
@@ -531,7 +541,7 @@ const Index = () => {
           </div>
         </div>
 
-        <div className="w-full lg:w-1/2 border-l border-white ps-10">
+        <div className="w-full lg:w-1/2 border-l border-white ps-10 gsap-fade-right">
           <Splide
             options={{
               type: "fade",
@@ -568,8 +578,8 @@ const Index = () => {
       </div>
 
       {/* Counts */}
-      <div className="grid grid-cols-1 py-[8%] sm:grid-cols-3 gap-12 px-[2%] md:px-[8%] xl:px-[12%]">
-        <div className="text-center">
+      <div className="grid grid-cols-1 py-[8%] sm:grid-cols-3 gap-12 px-[2%] md:px-[8%] xl:px-[12%] gsap-stagger-container">
+        <div className="text-center gsap-stagger-item">
           <h2 className="text-7xl sm:text-8xl font-bold leading-none"
             style={{
               color: "transparent",
@@ -584,7 +594,7 @@ const Index = () => {
           </p>
         </div>
 
-        <div className="text-center">
+        <div className="text-center gsap-stagger-item">
           <h2 className="text-7xl sm:text-8xl font-bold leading-none"
             style={{
               color: "transparent",
@@ -599,7 +609,7 @@ const Index = () => {
           </p>
         </div>
 
-        <div className="text-center">
+        <div className="text-center gsap-stagger-item">
           <h2 className="text-7xl sm:text-8xl font-bold leading-none"
             style={{
               color: "transparent",
@@ -617,7 +627,7 @@ const Index = () => {
 
       {/* Get in touch */}
       <div className="py-[8%]">
-        <div className="contact py-[8%] px-[2%] md:px-[8%] xl:px-[12%] h-[800px] relative">
+        <div className="contact py-[8%] px-[2%] md:px-[8%] xl:px-[12%] h-[800px] relative gsap-fade-up">
           <div className="team-conten w-full lg:w-[60%] mb-10">
             <div>
               <span className="text-black bg-primary px-2 py-3 font-semibold text-md sm:text-xl rounded-sm">
@@ -710,7 +720,7 @@ const Index = () => {
 
       {/* Blog */}
       <div className="blog py-[8%] px-[2%] md:px-[8%] xl:px-[12%]">
-        <div className="blog-conten w-full lg:w-[60%] mb-10">
+        <div className="blog-conten w-full lg:w-[60%] mb-10 gsap-fade-up">
           <div>
             <span className="text-black bg-primary px-2 py-3 font-semibold text-md sm:text-xl rounded-sm">
               News & Blog
@@ -722,11 +732,11 @@ const Index = () => {
           </div>
         </div>
 
-        <div className="blog-wrapper grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
+        <div className="blog-wrapper grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 gsap-stagger-container">
           {blogs.map((blog) => (
             <div
               key={blog.id}
-              className="blog-item group flex flex-col text-white"
+              className="blog-item group flex flex-col text-white gsap-stagger-item"
             >
               <div className="blog-item group flex flex-col text-white">
                 <img
@@ -768,7 +778,7 @@ const Index = () => {
 
       {/* Brand */}
       <div className="brand py-[8%] px-[2%] md:px-[8%] xl:px-[12%]">
-        <div className="brand-conten w-full lg:w-[60%] mb-10">
+        <div className="brand-conten w-full lg:w-[60%] mb-10 gsap-fade-up">
           <span className="text-black bg-primary px-2 py-3 font-semibold text-md sm:text-xl rounded-sm">
             Fantastic and Premium Clients
           </span>
@@ -778,12 +788,12 @@ const Index = () => {
           </h2>
         </div>
 
-        <div className="brand-wrapper grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <div className="brand-wrapper grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 gsap-stagger-container">
           {brands.map((brand) => (
             <Link
               key={brand.id}
               to={brand.link}
-              className="brand-item flex cursor-pointer border border-gray-50/20 p-5 relative justify-center items-center"
+              className="brand-item flex cursor-pointer border border-gray-50/20 p-5 relative justify-center items-center gsap-stagger-item"
             >
               <img
                 src={brand.image}
@@ -795,7 +805,7 @@ const Index = () => {
           ))}
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
