@@ -8,7 +8,7 @@ import blog5 from "../assets/blog_05.jpg"
 import blog6 from "../assets/blog_06.jpg"
 
 
-const blogs = [
+export const blogs = [
   {
     id: 1,
     date: "April 10, 2025",
@@ -67,7 +67,7 @@ const Blog = () => {
         subtitle="The Latest Insights from Our Creative Team"
         breadcrumbs={[
           { label: "Home", path: "/" },
-          { label: "Our Blog", path: "/blog" }
+          { label: "Our Blog", path: "/blogs" }
         ]}
       />
 
@@ -97,7 +97,7 @@ const Blog = () => {
               </p>
 
               <Link
-                to={`/blog/${blog.id}`}
+                to={`/blogs/${blog.id}`}
                 className="text-xl font-semibold hover:text-lime-300 transition-all duration-300"
               >
                 {blog.title}

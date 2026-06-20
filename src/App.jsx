@@ -32,7 +32,7 @@ function App() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/:id" element={<ProjectDetails />} />
             <Route path="/blogs" element={<Blog />} />
-            <Route path="/blog/:id" element={<BlogDetails />} />
+            <Route path="/blogs/:id" element={<BlogDetails />} />
           </Routes>
           <Footer />
         </BrowserRouter>
