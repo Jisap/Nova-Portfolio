@@ -201,7 +201,7 @@ const Nav = () => {
           <li>
             <Link
               to="/contact"
-              className="text-4xl font-bold"
+              className="text-4xl lg:text-6xl font-bold"
               onClick={() => setMenuOpen(false)}
             >
               Contact Us
