@@ -13,6 +13,7 @@ import Projects from './Pages/Projects'
 import ProjectDetails from './Pages/ProjectDetails'
 import BlogDetails from './Pages/BlogDetails'
 import Blog from './Pages/Blog'
+import Contact from './Pages/Contact'
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
             <Route path="/projects/:id" element={<ProjectDetails />} />
             <Route path="/blogs" element={<Blog />} />
             <Route path="/blogs/:id" element={<BlogDetails />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
           <Footer />
         </BrowserRouter>
