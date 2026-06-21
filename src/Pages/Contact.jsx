@@ -1,56 +1,28 @@
 import { Link } from "react-router-dom"
 import SectionBanner from "../Components/SectionBanner"
 import { Icon } from "@iconify/react"
-import { useId, useState } from "react";
-
-const faqs = [
-  {
-    question: "What services does Nova provide?",
-    answer: "Nova offers comprehensive creative and digital solutions, including branding, UI/UX design, web design, marketing strategy, content creation, and digital product development."
-  },
-  {
-    question: "Can Nova help build a brand from scratch?",
-    answer: "Yes. We guide businesses through the entire branding process, from research and positioning to visual identity, messaging, and brand guidelines."
-  },
-  {
-    question: "Do you work with startups and established companies?",
-    answer: "Absolutely. We collaborate with startups, growing businesses, and established organizations, tailoring our approach to each client's goals and stage of growth."
-  },
-  {
-    question: "What is your UI/UX design process?",
-    answer: "Our process includes discovery, research, wireframing, prototyping, user testing, and interface design to create intuitive and engaging digital experiences."
-  },
-  {
-    question: "Can Nova redesign an existing website or product?",
-    answer: "Yes. We can audit your current digital presence, identify opportunities for improvement, and deliver a modernized design focused on usability, performance, and brand consistency."
-  },
-  {
-    question: "Do you provide marketing services after the design phase?",
-    answer: "Yes. We offer ongoing marketing support, including digital campaigns, content strategy, social media management, SEO, and performance optimization."
-  },
-  {
-    question: "How long does a typical project take?",
-    answer: "Project timelines vary depending on scope and complexity. Smaller projects may take a few weeks, while full branding and digital transformation projects can span several months."
-  },
-  {
-    question: "How do we get started with Nova?",
-    answer: "Simply contact our team to schedule a discovery call. We'll discuss your goals, evaluate your needs, and create a customized strategy to help your business grow."
-  }
-];
+import { useId, useState, useEffect, useRef } from "react";
+import { initScrollAnimations } from "../animations/scroll";
+import { faqsData as faqs } from "../data/mockData";
 
 const Contact = () => {
-
+  const containerRef = useRef(null);
   const [openIndex, setOpenIndex] = useState(0);
-  // useId genera un id único para cada faq. Los ids no se usan para estilos CSS ni para la lógica interna de React
-  // Específicamente, se utilizan para crear una relación semántica entre el botón (la pregunta) y el panel (la respuesta) 
-  // mediante atributos WAI-ARIA. Esto es fundamental para los usuarios que utilizan lectores de pantalla (como NVDA, JAWS o VoiceOver).
   const baseId = useId();
+
+  useEffect(() => {
+    if (containerRef.current) {
+      const ctx = initScrollAnimations(containerRef.current);
+      return () => ctx.revert();
+    }
+  }, []);
+
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index)
   }
 
   return (
-    <>
+    <div ref={containerRef} className="overflow-x-hidden">
       <SectionBanner
         title="Contact"
         subtitle="Have ideas for your businnes? Let's build something awesome together."
@@ -61,7 +33,7 @@ const Contact = () => {
       />
 
       <div className="py-[8%] px-[2%] md:px-[8%] xl:px-[12%] flex justify-center items-start gap-10 flex-wrap lg:flex-nowrap ">
-        <div className="w-full lg:w-1/2 text-white">
+        <div className="w-full lg:w-1/2 text-white gsap-fade-left">
           <div>
             <h3 className="text-3xl font-semibold">
               Send Us a Message
@@ -86,7 +58,7 @@ const Contact = () => {
           </form>
         </div>
 
-        <div className="w-full lg:w-1/2 text-white h-[550px] rounded-2xl overflow-hidden">
+        <div className="w-full lg:w-1/2 text-white h-[550px] rounded-2xl overflow-hidden gsap-fade-right">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10611.70186399473!2d-1.475458!3d41.6497849!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48367254f38a4091%3A0xa38d23d0c28f81b6!2sCubo%20Media!5e0!3m2!1sen!2ses!4v1750465641271!5m2!1sen!2ses"
             width="100%"
@@ -103,7 +75,7 @@ const Contact = () => {
 
       {/* FAQs */}
       <div className="faq px-[2%] md:px-[8%] xl:px-[12%] py-[8%]">
-        <div className="mb-12 max-w-2xl">
+        <div className="mb-12 max-w-2xl gsap-fade-up">
           <span className="text-black bg-primary px-2 py-3 font-semibold text-md sm:text-xl rounded-sm">
             Frequently Asked
           </span>
@@ -113,7 +85,7 @@ const Contact = () => {
           </h2>
         </div>
 
-        <div role="list" className="flex flex-col gap-4">
+        <div role="list" className="flex flex-col gap-4 gsap-stagger-container">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             const panelId = `${baseId}-panel-${index}`;    // Identificador único para el panel de la respuesta
@@ -124,7 +96,7 @@ const Contact = () => {
                 key={index}
                 role="listitem"
                 className={`
-                        rounded-3xl border-2 transition-colors duration-300
+                        rounded-3xl border-2 transition-colors duration-300 gsap-stagger-item
                         ${isOpen ? "border-lime-400 bg-lime-400/4" : "border-gray-300/20"}
                       `}
               >
@@ -191,7 +163,7 @@ const Contact = () => {
           })}
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

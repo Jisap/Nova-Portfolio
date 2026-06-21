@@ -1,114 +1,29 @@
+import { useEffect, useRef } from "react"
 import { Icon } from "@iconify/react"
 import CountUp from "../Components/CountUp"
 import SectionBanner from "../Components/SectionBanner"
-import serviceicon1 from "../assets/service-icon1.png"
-import serviceicon2 from "../assets/service-icon2.png"
-import serviceicon3 from "../assets/service-icon3.png"
-import serviceicon4 from "../assets/service-icon4.png"
-import serviceicon5 from "../assets/service-icon5.png"
 import ServiceItem from "../Components/ServiceItem"
 import { Link } from "react-router-dom"
-import brand1 from "../assets/brand1.png"
-import brand2 from "../assets/brand2.png"
-import brand3 from "../assets/brand3.png"
-import brand4 from "../assets/brand4.png"
-import brand5 from "../assets/brand5.png"
-import brand6 from "../assets/brand6.png"
-import brand7 from "../assets/brand7.png"
+import { initScrollAnimations } from "../animations/scroll"
 
-
-const servicesPage = [
-  {
-    id: 1,
-    name: "Brand Creation",
-    icon: serviceicon1,
-    items: [
-      "Brand Strategy",
-      "Visual Identity",
-      "Naming",
-      "Toolkits",
-      "Guidelines",
-    ]
-  },
-  {
-    id: 2,
-    name: "Web Campaigns",
-    icon: serviceicon2,
-    items: [
-      "Creative Direction",
-      "Concepts",
-      "Copywriting",
-      "Social Media",
-      "Creative Strategy",
-    ]
-  },
-  {
-    id: 3,
-    name: "UX/UI Design",
-    icon: serviceicon3,
-    items: [
-      "Native and Web Apps",
-      "Campaigns / Brand Sites",
-      "Machine Learning / AI",
-      "Brand Design",
-      "Product Animation Design",
-    ]
-  },
-]
-
-const services = [
-  {
-    number: "01.",
-    title: "Brand Strategy",
-    description:
-      "We work with you to understand your business goals and craft strategies that deliver measurable results. Our approach combines creativity, technology, and market insights to help you stand out.",
-    icon: serviceicon1,
-  },
-  {
-    number: "02.",
-    title: "UI / UX Design",
-    description:
-      "We design intuitive interfaces and meaningful experiences that connect brands with their audiences across every touchpoint.",
-    icon: serviceicon2,
-  },
-  {
-    number: "03.",
-    title: "Web Development",
-    description:
-      "We build fast, scalable and accessible web products using modern stacks, clean architecture and a strong attention to detail.",
-    icon: serviceicon3,
-  },
-  {
-    number: "04.",
-    title: "Motion & Branding",
-    description:
-      "We bring brands to life through motion design, micro-interactions and visual systems crafted to feel alive and consistent.",
-    icon: serviceicon4,
-  },
-  {
-    number: "05.",
-    title: "Creative Direction",
-    description:
-      "We guide the creative process end-to-end, aligning concept, design and storytelling with the goals of your business.",
-    icon: serviceicon5,
-  },
-
-];
-
-const brands = [
-  { id: 1, image: brand1, link: "https://www.google.com" },
-  { id: 2, image: brand2, link: "https://www.google.com" },
-  { id: 3, image: brand3, link: "https://www.google.com" },
-  { id: 4, image: brand4, link: "https://www.google.com" },
-  { id: 5, image: brand5, link: "https://www.google.com" },
-  { id: 6, image: brand6, link: "https://www.google.com" },
-  { id: 7, image: brand7, link: "https://www.google.com" },
-  { id: 8, image: brand1, link: "https://www.google.com" },
-];
+import {
+  servicesPageData as servicesPage,
+  servicesDetailed as services,
+  brandsData as brands
+} from "../data/mockData"
 
 const Services = () => {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      const ctx = initScrollAnimations(containerRef.current);
+      return () => ctx.revert();
+    }
+  }, []);
+
   return (
-    <>
+    <div ref={containerRef}>
       <SectionBanner
         title="Our Services"
         subtitle="Our values and vaulated us to the top of the industry."
@@ -118,9 +33,9 @@ const Services = () => {
         ]}
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-14 py-[8%] px-[2%] md:px-[8%] xl:px-[12%] overflow-x-hidden">
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-14 py-[8%] px-[2%] md:px-[8%] xl:px-[12%] overflow-x-hidden gsap-stagger-container">
         {servicesPage.map((service) => (
-          <div className="ser-item border border-gray-50/20 text-center rounded-sm relative" key={service.id}>
+          <div className="ser-item border border-gray-50/20 text-center rounded-sm relative gsap-stagger-item" key={service.id}>
             <div className="image bg-primary mx-auto w-30 h-30 md:w-40 md:h-40 p-8 rounded-full transform -translate-y-8 md:-translate-y-14">
               <img
                 src={service.icon}
@@ -145,8 +60,8 @@ const Services = () => {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 py-[8%] xl:py-[4%] sm:grid-cols-3 gap-12 px-[2%] md:px-[8%] xl:px-[12%]">
-        <div className="text-center">
+      <div className="grid grid-cols-1 py-[8%] xl:py-[4%] sm:grid-cols-3 gap-12 px-[2%] md:px-[8%] xl:px-[12%] gsap-stagger-container">
+        <div className="text-center gsap-stagger-item">
           <h2 className="text-7xl sm:text-8xl font-bold leading-none"
             style={{
               color: "transparent",
@@ -161,7 +76,7 @@ const Services = () => {
           </p>
         </div>
 
-        <div className="text-center">
+        <div className="text-center gsap-stagger-item">
           <h2 className="text-7xl sm:text-8xl font-bold leading-none"
             style={{
               color: "transparent",
@@ -176,7 +91,7 @@ const Services = () => {
           </p>
         </div>
 
-        <div className="text-center">
+        <div className="text-center gsap-stagger-item">
           <h2 className="text-7xl sm:text-8xl font-bold leading-none"
             style={{
               color: "transparent",
@@ -234,8 +149,8 @@ const Services = () => {
           </div>
         </div>
 
-        <ul className="flex flex-col gap-5 mt-20 relative">
-          <li className="w-full flex items-start justify-between lg:flex-row flex-col">
+        <ul className="flex flex-col gap-5 mt-20 relative gsap-stagger-container">
+          <li className="w-full flex items-start justify-between lg:flex-row flex-col gsap-stagger-item">
             <span className="w-full lg:w-3xl font-semibold text-2xl text-white">
               Our Mission
             </span>
@@ -246,7 +161,7 @@ const Services = () => {
               with each year, and our accumulated experience. helps us approach new challenges with confidence and creativity.
             </p>
           </li>
-          <li className="w-full flex items-start justify-between lg:flex-row flex-col">
+          <li className="w-full flex items-start justify-between lg:flex-row flex-col gsap-stagger-item">
             <span className="w-full lg:w-3xl font-semibold text-2xl text-white">
               Our Goal
             </span>
@@ -260,7 +175,7 @@ const Services = () => {
       </div>
 
       <div className="service py-[2%] px-[2%] md:px-[8%] xl:px-[12%]">
-        <div className="service-content">
+        <div className="service-content gsap-fade-up">
           <span className="text-black bg-primary px-2 py-3 font-semibold text-md sm:text-xl rounded-sm">
             What we do
           </span>
@@ -270,22 +185,23 @@ const Services = () => {
           </h2>
         </div>
 
-        <div className="flex flex-col w-full mt-8">
+        <div className="flex flex-col w-full mt-8 gsap-stagger-container">
           {services.map((service) => (
-            <ServiceItem
-              key={service.number}
-              number={service.number}
-              title={service.title}
-              description={service.description}
-              icon={service.icon}
-            />
+            <div key={service.number} className="gsap-stagger-item">
+              <ServiceItem
+                number={service.number}
+                title={service.title}
+                description={service.description}
+                icon={service.icon}
+              />
+            </div>
           ))}
         </div>
       </div>
 
       {/* Get in touch */}
       <div className="py-[8%]">
-        <div className="contact py-[8%] px-[2%] md:px-[8%] xl:px-[12%] h-[800px] relative">
+        <div className="contact py-[8%] px-[2%] md:px-[8%] xl:px-[12%] h-[800px] relative gsap-fade-up">
           <div className="team-conten w-full lg:w-[60%] mb-10">
             <div>
               <span className="text-black bg-primary px-2 py-3 font-semibold text-md sm:text-xl rounded-sm">
@@ -378,7 +294,7 @@ const Services = () => {
 
       {/* Brand */}
       <div className="brand py-[8%] px-[2%] md:px-[8%] xl:px-[12%]">
-        <div className="brand-conten w-full lg:w-[60%] mb-10">
+        <div className="brand-conten w-full lg:w-[60%] mb-10 gsap-fade-up">
           <span className="text-black bg-primary px-2 py-3 font-semibold text-md sm:text-xl rounded-sm">
             Fantastic and Premium Clients
           </span>
@@ -388,12 +304,12 @@ const Services = () => {
           </h2>
         </div>
 
-        <div className="brand-wrapper grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <div className="brand-wrapper grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 gsap-stagger-container">
           {brands.map((brand) => (
             <Link
               key={brand.id}
               to={brand.link}
-              className="brand-item flex cursor-pointer border border-gray-50/20 p-5 relative justify-center items-center"
+              className="brand-item flex cursor-pointer border border-gray-50/20 p-5 relative justify-center items-center gsap-stagger-item"
             >
               <img
                 src={brand.image}
@@ -405,7 +321,7 @@ const Services = () => {
           ))}
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

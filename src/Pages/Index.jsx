@@ -2,37 +2,23 @@ import heroVideo from "../assets/hero-video.mp4"
 import title_icon from "../assets/title_icon.svg"
 import { Link } from "react-router-dom"
 import { Icon } from "@iconify/react"
-import ser1 from "../assets/serv-icon1.png"
-import ser2 from "../assets/serv-icon2.png"
-import ser3 from "../assets/serv-icon3.png"
 import { useState, useEffect, useRef } from "react"
 import { initScrollAnimations } from "../animations/scroll"
 
 import "@splidejs/react-splide/css";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
-import project1 from "../assets/project-01.jpg"
-import project2 from "../assets/project-02.jpg"
-import project3 from "../assets/project-03.jpg"
-import project4 from "../assets/project-04.jpg"
-import team1 from "../assets/team-01.png"
-import team2 from "../assets/team-02.png"
-import team3 from "../assets/team-03.png"
-import team4 from "../assets/team-04.png"
 import CountUp from "../Components/CountUp"
-import blog1 from "../assets/blog_01.jpg"
-import blog2 from "../assets/blog_02.jpg"
-import blog3 from "../assets/blog_03.jpg"
-import brand1 from "../assets/brand1.png"
-import brand2 from "../assets/brand2.png"
-import brand3 from "../assets/brand3.png"
-import brand4 from "../assets/brand4.png"
-import brand5 from "../assets/brand5.png"
-import brand6 from "../assets/brand6.png"
-import brand7 from "../assets/brand7.png"
 
-
-
+import {
+  servicesSimple as services,
+  splideItemsText as items,
+  projectsData as projects,
+  teamMembers as members,
+  testimonialsData as testimonials,
+  blogsData as blogs,
+  brandsData as brands
+} from "../data/mockData"
 
 const Index = () => {
   const containerRef = useRef(null);
@@ -46,145 +32,6 @@ const Index = () => {
 
   const [activeIndex, setActiveIndex] = useState(1);
 
-  const services = [
-    { id: 1, title: "Creation", img: ser1 },
-    { id: 2, title: "Websites", img: ser2 },
-    { id: 3, title: "Studio", img: ser3 },
-  ];
-
-  const items = [
-    "- Creative Direction",
-    "- Machine Learning / AI",
-    "- Brand Strategy",
-    "- Native and Webs Apps",
-  ];
-
-  const projects = [
-    {
-      id: 1,
-      image: project1,
-      category: "Branding",
-      title: "Museums Art Concept",
-    },
-    {
-      id: 2,
-      image: project2,
-      category: "Marketing",
-      title: "Market Economy Graphics",
-    },
-    {
-      id: 3,
-      image: project3,
-      category: "Design",
-      title: "Headphones 3D Rendering",
-    },
-    {
-      id: 4,
-      image: project4,
-      category: "Branding",
-      title: "Product Packaging Style",
-    },
-  ];
-
-  const members = [
-    {
-      id: 1,
-      name: "Aarav Rao",
-      role: "UI/UX Designer",
-      img: team1,
-      letter: "A"
-    },
-    {
-      id: 2,
-      name: "Diya mehra",
-      role: "Digital Marketer",
-      img: team2,
-      letter: "D"
-    },
-    {
-      id: 3,
-      name: "Karan Thakor",
-      role: "Full-Stacl Developer",
-      img: team3,
-      letter: "K"
-    },
-    {
-      id: 4,
-      name: "Sara Thomas",
-      role: "Content Strategist",
-      img: team4,
-      letter: "S"
-    },
-  ];
-
-  const testimonials = [
-    {
-      id: 1,
-      text: "Their high level of customer service. Always available and quick to respond. They exceeded all expectations.",
-      name: "Jessica Brown",
-      role: "Design Quality",
-      rating: 4.5,
-    },
-    {
-      id: 2,
-      text: "Working with them was seamless. They understood our vision and brought it to life perfectly. I will work with them again.",
-      name: "Mark Johnson",
-      role: "Creative Director",
-      rating: 5.0,
-    },
-    {
-      id: 3,
-      text: "The results speak for themselves. Our engagement increased by 300% in just one quarter. Excellent work.",
-      name: "Emily Carter",
-      role: "Marketing Manager",
-      rating: 4.8,
-    },
-    {
-      id: 4,
-      text: "Highly recommend! Professional, fast, and the final product exceeded all expectations.",
-      name: "David Wilson",
-      role: "Project Lead",
-      rating: 4.9,
-    },
-  ];
-
-  const blogs = [
-    {
-      id: 1,
-      date: "April 10, 2025",
-      category: "Art",
-      title: "Play to your Strength and Supercharge your Business",
-      description: "Ambleton: Behind the Branding",
-      image: blog1,
-    },
-    {
-      id: 2,
-      date: "May 22, 2025",
-      category: "Marketing",
-      title: "5 steps to Create an Outstanding Marketing Plan",
-      description: "Ambleton: Behing the Branding of High Calgary's Community Mos innovative company",
-      image: blog2,
-    },
-    {
-      id: 3,
-      date: "May 15, 2025",
-      category: "Copywriting",
-      title: "10 Content Proofreading Tips to Catch More Avoidable Errors",
-      description: "Ambleton: The Most Important Element in Ad Creating",
-      image: blog3,
-    },
-  ];
-
-  const brands = [
-    { id: 1, image: brand1, link: "https://www.google.com" },
-    { id: 2, image: brand2, link: "https://www.google.com" },
-    { id: 3, image: brand3, link: "https://www.google.com" },
-    { id: 4, image: brand4, link: "https://www.google.com" },
-    { id: 5, image: brand5, link: "https://www.google.com" },
-    { id: 6, image: brand6, link: "https://www.google.com" },
-    { id: 7, image: brand7, link: "https://www.google.com" },
-    { id: 8, image: brand1, link: "https://www.google.com" },
-  ];
 
 
   return (

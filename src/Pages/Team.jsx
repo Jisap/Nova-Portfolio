@@ -1,80 +1,21 @@
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom"
 import SectionBanner from "../Components/SectionBanner"
-import team1 from "../assets/team-01.png"
-import team2 from "../assets/team-02.png"
-import team3 from "../assets/team-03.png"
-import team4 from "../assets/team-04.png"
-import team5 from "../assets/team-05.jpg"
-import team6 from "../assets/team-06.jpg"
-import { Splide, SplideSlide } from "@splidejs/react-splide"
-import "@splidejs/react-splide/css"
-
-export const teamMembers = [
-  {
-    id: 1,
-    name: "Aarav Rao",
-    role: "UI/UX Designer",
-    img: team1,
-    age: "27 Years",
-    location: "Mumbai, India",
-    email: "aara@gmail.com",
-    phone: "+91 8765 3234"
-  },
-  {
-    id: 2,
-    name: "Diya mehra",
-    role: "Digital Marketer",
-    img: team2,
-    age: "28 Years",
-    location: "Ahmedabad, India",
-    email: "diya@gmail.com",
-    phone: "+91 3256 9876"
-  },
-  {
-    id: 3,
-    name: "Karan Thakor",
-    role: "Full-Stacl Developer",
-    img: team3,
-    age: "26 Years",
-    location: "New York, USA",
-    email: "karan@gmail.com",
-    phone: "+91 4323 9876"
-  },
-  {
-    id: 4,
-    name: "Sara Thomas",
-    role: "Content Strategist",
-    img: team4,
-    age: "25 Years",
-    location: "Surat, India",
-    email: "sara@gmail.com",
-    phone: "+91 5678 2354"
-  },
-  {
-    id: 5,
-    name: "Alex Morgan",
-    role: "UI/UX Designer",
-    img: team5,
-    age: "29 Years",
-    location: "Toronto, Canada",
-    email: "alex@gmail.com",
-    phone: "+91 9877 4321"
-  },
-  {
-    id: 6,
-    name: "Olivia Rodriguez",
-    role: "UI/UX Designer",
-    img: team6,
-    age: "30 Years",
-    location: "London, UK",
-    email: "olivia@gmail.com",
-    phone: "+91 2345 5522"
-  },
-];
+import { initScrollAnimations } from "../animations/scroll";
+import { teamMembers } from "../data/mockData";
 
 const Team = () => {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      const ctx = initScrollAnimations(containerRef.current);
+      return () => ctx.revert();
+    }
+  }, []);
+
   return (
-    <>
+    <div ref={containerRef} className="overflow-x-hidden">
       <SectionBanner
         title="Our Team"
         subtitle="Meet our creativity company family."
@@ -84,9 +25,9 @@ const Team = () => {
         ]}
       />
 
-      <div className="py-[8%] px-[12%] grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-10 ">
+      <div className="py-[8%] px-[12%] grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-10 gsap-stagger-container">
         {teamMembers.map((member) => (
-          <Link to={`/team/${member.id}`} key={member.id}>
+          <Link to={`/team/${member.id}`} key={member.id} className="gsap-stagger-item">
             <div className="text-center">
               <div className="bg-white rounded-sm overflow-hidden">
                 <img
@@ -108,7 +49,7 @@ const Team = () => {
           </Link>
         ))}
       </div>
-    </>
+    </div>
   )
 }
 

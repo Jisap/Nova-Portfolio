@@ -1,71 +1,22 @@
+import { useEffect, useRef } from "react";
 import { Icon } from "@iconify/react"
 import SectionBanner from "../Components/SectionBanner"
 import { Link } from "react-router-dom"
-import brand1 from "../assets/brand1.png"
-import brand2 from "../assets/brand2.png"
-import brand3 from "../assets/brand3.png"
-import brand4 from "../assets/brand4.png"
-import brand5 from "../assets/brand5.png"
-import brand6 from "../assets/brand6.png"
-import brand7 from "../assets/brand7.png"
-
-
-const plans = [
-  {
-    title: "Standard Package",
-    duration: "3 Months",
-    price: "$60.10",
-    Icon: "solar:rocket-bold",
-    recommended: false,
-    features: [
-      { text: "Unlimited updates", active: true },
-      { text: "Custom permissions", active: true },
-      { text: "Custom infraestructure", active: false },
-      { text: "Custom design and features", active: false }
-    ]
-  },
-  {
-    title: "Professional Package",
-    duration: "6 Months",
-    price: "$120.10",
-    Icon: "mdi:crown",
-    recommended: true,
-    features: [
-      { text: "Unlimited updates", active: true },
-      { text: "Custom permissions", active: true },
-      { text: "Custom infraestructure", active: true },
-      { text: "Custom design and features", active: false }
-    ]
-  },
-  {
-    title: "Premium Package",
-    duration: "01 Year",
-    price: "$230",
-    Icon: "fa-solid:building",
-    recommended: false,
-    features: [
-      { text: "Unlimited updates", active: true },
-      { text: "Custom permissions", active: true },
-      { text: "Custom infraestructure", active: true },
-      { text: "Custom design and features", active: true }
-    ]
-  }
-];
-
-const brands = [
-  { id: 1, image: brand1, link: "https://www.google.com" },
-  { id: 2, image: brand2, link: "https://www.google.com" },
-  { id: 3, image: brand3, link: "https://www.google.com" },
-  { id: 4, image: brand4, link: "https://www.google.com" },
-  { id: 5, image: brand5, link: "https://www.google.com" },
-  { id: 6, image: brand6, link: "https://www.google.com" },
-  { id: 7, image: brand7, link: "https://www.google.com" },
-  { id: 8, image: brand1, link: "https://www.google.com" },
-];
+import { initScrollAnimations } from "../animations/scroll";
+import { pricingPlans as plans, brandsData as brands } from "../data/mockData";
 
 const Pricingplan = () => {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      const ctx = initScrollAnimations(containerRef.current);
+      return () => ctx.revert();
+    }
+  }, []);
+
   return (
-    <>
+    <div ref={containerRef} className="overflow-x-hidden">
       <SectionBanner
         title="Pricing Plan"
         subtitle="Its helps you choose prices to maximise."
@@ -75,9 +26,9 @@ const Pricingplan = () => {
         ]}
       />
 
-      <div className="py-[8%] px-[2%] md:px-[8%] xl:px-[12%] grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-10">
+      <div className="py-[8%] px-[2%] md:px-[8%] xl:px-[12%] grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-10 gsap-stagger-container">
         {plans.map((plan, idx) => (
-          <div key={idx} className={`border border-gray-50/20 rounded-lg relative ${plan.recommended ? "shadow-[0px_0px_25px_rgba(0,0,0,0.2)]" : ""}`}>
+          <div key={idx} className={`border border-gray-50/20 rounded-lg relative gsap-stagger-item ${plan.recommended ? "shadow-[0px_0px_25px_rgba(0,0,0,0.2)]" : ""}`}>
             {plan.recommended && (
               <span className="absolute -top-4 right-6 bg-white text-black text-sm py-1  px-2 rounded-sm ">
                 Recommended
@@ -91,7 +42,7 @@ const Pricingplan = () => {
             </div>
 
             <div className="w-14 h-14 bg-white text-black rounded-full flex items-center justify-center absolute top-42 left-10">
-              <Icon icon={plan.Icon} className="text-3xl" />
+              <Icon icon={plan.icon} className="text-3xl" />
             </div>
 
             <ul className="px-8 mt-10 mb-8 space-y-4 text-white">
@@ -115,8 +66,8 @@ const Pricingplan = () => {
       {/* Get in touch */}
       <div className="py-[2%]">
         <div className="contact py-[8%] px-[2%] md:px-[8%] xl:px-[12%] h-[800px] relative">
-          <div className="team-conten w-full lg:w-[60%] mb-10">
-            <div>
+          <div className="team-conten w-full lg:w-[60%] mb-10 flex lg:flex-row flex-col gap-10">
+            <div className="w-full lg:w-1/2 gsap-fade-left">
               <span className="text-black bg-primary px-2 py-3 font-semibold text-md sm:text-xl rounded-sm">
                 Get in Touch
               </span>
@@ -134,13 +85,13 @@ const Pricingplan = () => {
               </p>
             </div>
 
-            <div className="contact-image">
+            <div className="contact-image w-full lg:w-1/2 relative">
               <div className="cat-img-circle img-circle--1"></div>
               <div className="cat-img-circle img-circle--2"></div>
               <div className="cat-img-circle img-circle--3"></div>
 
-              <ul className="text-white grid grid-cols-2 gap-10 absolute right-0 bottom-60 social-icons">
-                <li>
+              <ul className="text-white grid grid-cols-2 gap-10 absolute right-0 bottom-60 social-icons gsap-stagger-container">
+                <li className="gsap-stagger-item">
                   <Link to="/" className="social-icon relative overflow-hidden p-10 text-xl font-bold h-[100px] rounded-full bg-black flex gap-8 items-center">
                     <Icon
                       icon="ri:facebook-fill"
@@ -155,7 +106,7 @@ const Pricingplan = () => {
                   </Link>
                 </li>
 
-                <li>
+                <li className="gsap-stagger-item">
                   <Link to="/" className="social-icon relative overflow-hidden p-10 text-xl font-bold h-[100px] rounded-full bg-black flex gap-8 items-center">
                     <Icon
                       icon="iconoir:instagram"
@@ -170,7 +121,7 @@ const Pricingplan = () => {
                   </Link>
                 </li>
 
-                <li>
+                <li className="gsap-stagger-item">
                   <Link to="/" className="social-icon relative overflow-hidden p-10 text-xl font-bold h-[100px] rounded-full bg-black flex gap-8 items-center">
                     <Icon
                       icon="line-md:twitter-x"
@@ -185,7 +136,7 @@ const Pricingplan = () => {
                   </Link>
                 </li>
 
-                <li>
+                <li className="gsap-stagger-item">
                   <Link to="/" className="social-icon relative overflow-hidden p-10 text-xl font-bold h-[100px] rounded-full bg-black flex gap-8 items-center">
                     <Icon
                       icon="ri:linkedin-fill"
@@ -207,7 +158,7 @@ const Pricingplan = () => {
 
       {/* Brand */}
       <div className="brand py-[8%] px-[2%] md:px-[8%] xl:px-[12%]">
-        <div className="brand-conten w-full lg:w-[60%] mb-10">
+        <div className="brand-conten w-full lg:w-[60%] mb-10 gsap-fade-up">
           <span className="text-black bg-primary px-2 py-3 font-semibold text-md sm:text-xl rounded-sm">
             Fantastic and Premium Clients
           </span>
@@ -217,12 +168,12 @@ const Pricingplan = () => {
           </h2>
         </div>
 
-        <div className="brand-wrapper grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <div className="brand-wrapper grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 gsap-stagger-container">
           {brands.map((brand) => (
             <Link
               key={brand.id}
               to={brand.link}
-              className="brand-item flex cursor-pointer border border-gray-50/20 p-5 relative justify-center items-center"
+              className="brand-item flex cursor-pointer border border-gray-50/20 p-5 relative justify-center items-center gsap-stagger-item"
             >
               <img
                 src={brand.image}
@@ -234,9 +185,7 @@ const Pricingplan = () => {
           ))}
         </div>
       </div>
-    </>
-
-
+    </div>
   )
 }
 

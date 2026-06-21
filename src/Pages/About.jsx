@@ -1,143 +1,33 @@
+import { useEffect, useRef } from "react"
 import { Link } from "react-router-dom"
 import title_icon from "../assets/title_icon.svg"
 import { Icon } from "@iconify/react"
 import aboutLogo from "../assets/novo-about-logo.png"
 import CountUp from "../Components/CountUp"
-import serviceicon1 from "../assets/service-icon1.png"
-import serviceicon2 from "../assets/service-icon2.png"
-import serviceicon3 from "../assets/service-icon3.png"
-import serviceicon4 from "../assets/service-icon4.png"
-import serviceicon5 from "../assets/service-icon5.png"
 import ServiceItem from "../Components/ServiceItem"
-import team1 from "../assets/team-01.png"
-import team2 from "../assets/team-02.png"
-import team3 from "../assets/team-03.png"
-import team4 from "../assets/team-04.png"
 import { Splide, SplideSlide } from "@splidejs/react-splide"
-import brand1 from "../assets/brand1.png"
-import brand2 from "../assets/brand2.png"
-import brand3 from "../assets/brand3.png"
-import brand4 from "../assets/brand4.png"
-import brand5 from "../assets/brand5.png"
-import brand6 from "../assets/brand6.png"
-import brand7 from "../assets/brand7.png"
 import SectionBanner from "../Components/SectionBanner"
+import { initScrollAnimations } from "../animations/scroll"
 
-const services = [
-  {
-    number: "01.",
-    title: "Brand Strategy",
-    description:
-      "We work with you to understand your business goals and craft strategies that deliver measurable results. Our approach combines creativity, technology, and market insights to help you stand out.",
-    icon: serviceicon1,
-  },
-  {
-    number: "02.",
-    title: "UI / UX Design",
-    description:
-      "We design intuitive interfaces and meaningful experiences that connect brands with their audiences across every touchpoint.",
-    icon: serviceicon2,
-  },
-  {
-    number: "03.",
-    title: "Web Development",
-    description:
-      "We build fast, scalable and accessible web products using modern stacks, clean architecture and a strong attention to detail.",
-    icon: serviceicon3,
-  },
-  {
-    number: "04.",
-    title: "Motion & Branding",
-    description:
-      "We bring brands to life through motion design, micro-interactions and visual systems crafted to feel alive and consistent.",
-    icon: serviceicon4,
-  },
-  {
-    number: "05.",
-    title: "Creative Direction",
-    description:
-      "We guide the creative process end-to-end, aligning concept, design and storytelling with the goals of your business.",
-    icon: serviceicon5,
-  },
-
-];
-
-const members = [
-  {
-    id: 1,
-    name: "Aarav Rao",
-    role: "UI/UX Designer",
-    img: team1,
-    letter: "A"
-  },
-  {
-    id: 2,
-    name: "Diya mehra",
-    role: "Digital Marketer",
-    img: team2,
-    letter: "D"
-  },
-  {
-    id: 3,
-    name: "Karan Thakor",
-    role: "Full-Stacl Developer",
-    img: team3,
-    letter: "K"
-  },
-  {
-    id: 4,
-    name: "Sara Thomas",
-    role: "Content Strategist",
-    img: team4,
-    letter: "S"
-  },
-];
-
-const testimonials = [
-  {
-    id: 1,
-    text: "Their high level of customer service. Always available and quick to respond. They exceeded all expectations.",
-    name: "Jessica Brown",
-    role: "Design Quality",
-    rating: 4.5,
-  },
-  {
-    id: 2,
-    text: "Working with them was seamless. They understood our vision and brought it to life perfectly. I will work with them again.",
-    name: "Mark Johnson",
-    role: "Creative Director",
-    rating: 5.0,
-  },
-  {
-    id: 3,
-    text: "The results speak for themselves. Our engagement increased by 300% in just one quarter. Excellent work.",
-    name: "Emily Carter",
-    role: "Marketing Manager",
-    rating: 4.8,
-  },
-  {
-    id: 4,
-    text: "Highly recommend! Professional, fast, and the final product exceeded all expectations.",
-    name: "David Wilson",
-    role: "Project Lead",
-    rating: 4.9,
-  },
-];
-
-const brands = [
-  { id: 1, image: brand1, link: "https://www.google.com" },
-  { id: 2, image: brand2, link: "https://www.google.com" },
-  { id: 3, image: brand3, link: "https://www.google.com" },
-  { id: 4, image: brand4, link: "https://www.google.com" },
-  { id: 5, image: brand5, link: "https://www.google.com" },
-  { id: 6, image: brand6, link: "https://www.google.com" },
-  { id: 7, image: brand7, link: "https://www.google.com" },
-  { id: 8, image: brand1, link: "https://www.google.com" },
-];
+import {
+  servicesDetailed as services,
+  teamMembers as members,
+  testimonialsData as testimonials,
+  brandsData as brands
+} from "../data/mockData"
 
 const About = () => {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      const ctx = initScrollAnimations(containerRef.current);
+      return () => ctx.revert();
+    }
+  }, []);
+
   return (
-    <>
+    <div ref={containerRef} className="overflow-x-hidden">
       <SectionBanner
         title="About Us"
         subtitle="Creative studio at the intersection of art, design and technology."
@@ -148,7 +38,7 @@ const About = () => {
       />
 
       <div className="about py-[20%] xl:py-[8%] px-[2%] md:px-[8%] xl:px-[12%] flex justify-between items-start lg:flex-row flex-col gap-10">
-        <div className="about-content w-full lg:w-[60%]">
+        <div className="about-content w-full lg:w-[60%] gsap-fade-left">
           <span className="text-black bg-primary px-2 py-3 font-semibold text-md sm:text-xl rounded-sm">
             Welcome to Nova
           </span>
@@ -167,7 +57,7 @@ const About = () => {
           </ul>
         </div>
 
-        <div className="w-full lg:w-[40%] flex justify-center items-center mt-12">
+        <div className="w-full lg:w-[40%] flex justify-center items-center mt-12 gsap-fade-right">
           <div className="flex items-center justify-center w-[250px] h-[250px] relative border">
             <img
               src={aboutLogo}
@@ -178,8 +68,8 @@ const About = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 py-[8%] xl:py-[4%] sm:grid-cols-3 gap-12 px-[2%] md:px-[8%] xl:px-[12%]">
-        <div className="text-center">
+      <div className="grid grid-cols-1 py-[8%] xl:py-[4%] sm:grid-cols-3 gap-12 px-[2%] md:px-[8%] xl:px-[12%] gsap-stagger-container">
+        <div className="text-center gsap-stagger-item">
           <h2 className="text-7xl sm:text-8xl font-bold leading-none"
             style={{
               color: "transparent",
@@ -194,7 +84,7 @@ const About = () => {
           </p>
         </div>
 
-        <div className="text-center">
+        <div className="text-center gsap-stagger-item">
           <h2 className="text-7xl sm:text-8xl font-bold leading-none"
             style={{
               color: "transparent",
@@ -209,7 +99,7 @@ const About = () => {
           </p>
         </div>
 
-        <div className="text-center">
+        <div className="text-center gsap-stagger-item">
           <h2 className="text-7xl sm:text-8xl font-bold leading-none"
             style={{
               color: "transparent",
@@ -267,8 +157,8 @@ const About = () => {
           </div>
         </div>
 
-        <ul className="flex flex-col gap-5 mt-20 relative">
-          <li className="w-full flex items-start justify-between lg:flex-row flex-col">
+        <ul className="flex flex-col gap-5 mt-20 relative gsap-stagger-container">
+          <li className="w-full flex items-start justify-between lg:flex-row flex-col gsap-stagger-item">
             <span className="w-full lg:w-3xl font-semibold text-2xl text-white">
               Our Mission
             </span>
@@ -279,7 +169,7 @@ const About = () => {
               with each year, and our accumulated experience. helps us approach new challenges with confidence and creativity.
             </p>
           </li>
-          <li className="w-full flex items-start justify-between lg:flex-row flex-col">
+          <li className="w-full flex items-start justify-between lg:flex-row flex-col gsap-stagger-item">
             <span className="w-full lg:w-3xl font-semibold text-2xl text-white">
               Our Goal
             </span>
@@ -293,7 +183,7 @@ const About = () => {
       </div>
 
       <div className="service py-[2%] px-[2%] md:px-[8%] xl:px-[12%]">
-        <div className="service-content">
+        <div className="service-content gsap-fade-up">
           <span className="text-black bg-primary px-2 py-3 font-semibold text-md sm:text-xl rounded-sm">
             What we do
           </span>
@@ -303,21 +193,22 @@ const About = () => {
           </h2>
         </div>
 
-        <div className="flex flex-col w-full mt-8">
+        <div className="flex flex-col w-full mt-8 gsap-stagger-container">
           {services.map((service) => (
-            <ServiceItem
-              key={service.number}
-              number={service.number}
-              title={service.title}
-              description={service.description}
-              icon={service.icon}
-            />
+            <div key={service.number} className="gsap-stagger-item">
+              <ServiceItem
+                number={service.number}
+                title={service.title}
+                description={service.description}
+                icon={service.icon}
+              />
+            </div>
           ))}
         </div>
       </div>
 
       <div className="team py-[8%] px-[2%] md:px-[8%] xl:px-[12%]">
-        <div className="team-conten w-full lg:w-[60%] mb-10">
+        <div className="team-conten w-full lg:w-[60%] mb-10 gsap-fade-up">
           <div>
             <span className="text-black bg-primary px-2 py-3 font-semibold text-md sm:text-xl rounded-sm">
               Experts Team Members
@@ -329,11 +220,11 @@ const About = () => {
           </div>
         </div>
 
-        <div className="team-wrapper grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 ">
+        <div className="team-wrapper grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gsap-stagger-container">
           {members.map((member) => (
             <div
               key={member.id}
-              className="team-item relative overflow-hidden text-white border border-gray-50/20 h-[600px] md:h-[740px] group flex flex-col justify-between"
+              className="team-item relative overflow-hidden text-white border border-gray-50/20 h-[600px] md:h-[740px] group flex flex-col justify-between gsap-stagger-item"
             >
               {/* Description */}
               <div className="desc p-6 md:p-8">
@@ -398,7 +289,7 @@ const About = () => {
       </div>
 
       <div className="testimonial py-[8%] px-[2%] md:px-[8%] xl:px-[12%] flex flex-col lg:flex-row justify-between items-start gap-10">
-        <div className="tst-content w-full lg:w-1/2 text-white">
+        <div className="tst-content w-full lg:w-1/2 text-white gsap-fade-left">
           <h2 className="text-3xl sm:text-6xl font-semibold sm:max-w-3xl my-5 leading-tight text-white">
             Testimonials
           </h2>
@@ -424,7 +315,7 @@ const About = () => {
           </div>
         </div>
 
-        <div className="w-full lg:w-1/2 border-l border-white ps-10">
+        <div className="w-full lg:w-1/2 border-l border-white ps-10 gsap-fade-right">
           <Splide
             options={{
               type: "fade",
@@ -461,7 +352,7 @@ const About = () => {
       </div>
 
       <div className="brand py-[8%] px-[2%] md:px-[8%] xl:px-[12%]">
-        <div className="brand-conten w-full lg:w-[60%] mb-10">
+        <div className="brand-conten w-full lg:w-[60%] mb-10 gsap-fade-up">
           <span className="text-black bg-primary px-2 py-3 font-semibold text-md sm:text-xl rounded-sm">
             Fantastic and Premium Clients
           </span>
@@ -471,12 +362,12 @@ const About = () => {
           </h2>
         </div>
 
-        <div className="brand-wrapper grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <div className="brand-wrapper grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 gsap-stagger-container">
           {brands.map((brand) => (
             <Link
               key={brand.id}
               to={brand.link}
-              className="brand-item flex cursor-pointer border border-gray-50/20 p-5 relative justify-center items-center"
+              className="brand-item flex cursor-pointer border border-gray-50/20 p-5 relative justify-center items-center gsap-stagger-item"
             >
               <img
                 src={brand.image}
@@ -488,7 +379,7 @@ const About = () => {
           ))}
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

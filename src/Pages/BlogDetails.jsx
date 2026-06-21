@@ -1,13 +1,9 @@
-
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
-import { blogs } from "./Blog";
 import SectionBanner from "../Components/SectionBanner";
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaArrowLeft, FaArrowRight, FaUser, FaCalendar, FaClock } from "react-icons/fa";
-
-import post1 from "../assets/blogpost01.jpg";
-import post2 from "../assets/blogpost02.jpg";
-import post3 from "../assets/blogpost03.jpg";
+import { initScrollAnimations } from "../animations/scroll";
+import { blogsData as blogs, post1, post2, post3 } from "../data/mockData";
 
 const posts = [
   { id: 1, title: "The Power of Teamwork: Why Collaboration Matters in Design", date: "April 10, 2025", category: "Design", readTime: "5 min read", image: post1 },
@@ -16,6 +12,7 @@ const posts = [
 ];
 
 const BlogDetails = () => {
+  const containerRef = useRef(null);
   const { id } = useParams();
   const blog = blogs.find((b) => b.id === parseInt(id));
   const navigate = useNavigate();
@@ -24,6 +21,13 @@ const BlogDetails = () => {
     if (!blog) navigate("/blogs");
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [blog, navigate]);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      const ctx = initScrollAnimations(containerRef.current);
+      return () => ctx.revert();
+    }
+  }, []);
 
   if (!blog) return null;
 
@@ -36,7 +40,7 @@ const BlogDetails = () => {
   const nextPost = currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null;
 
   return (
-    <>
+    <div ref={containerRef} className="overflow-x-hidden">
       <SectionBanner
         title={blog.title}
         subtitle="Meet our creativity company family."
@@ -49,7 +53,7 @@ const BlogDetails = () => {
 
       <article className="py-[8%] px-[2%] md:px-[8%] xl:px-[12%] text-white">
         {/* Imagen hero con overlay sutil */}
-        <div className="relative w-full h-[400px] md:h-[600px] rounded-2xl overflow-hidden group">
+        <div className="relative w-full h-[400px] md:h-[600px] rounded-2xl overflow-hidden group gsap-fade-up">
           <img
             src={blog.image}
             alt={blog.title}
@@ -59,7 +63,7 @@ const BlogDetails = () => {
         </div>
 
         {/* Metadata del post */}
-        <div className="mt-8 flex flex-wrap items-center gap-6 text-sm text-gray-400 border-b border-gray-800 pb-6">
+        <div className="mt-8 flex flex-wrap items-center gap-6 text-sm text-gray-400 border-b border-gray-800 pb-6 gsap-fade-up">
           <span className="flex items-center gap-2">
             <FaUser className="text-lime-300" />
             <span>By <span className="text-white">Admin</span></span>
@@ -81,18 +85,18 @@ const BlogDetails = () => {
         </div>
 
         {/* Título grande */}
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-8 leading-tight">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-8 leading-tight gsap-fade-up">
           {blog.title}
         </h1>
 
         {/* Intro / Lead paragraph */}
-        <p className="mt-8 text-xl text-gray-300 leading-9 font-light italic border-l-4 border-lime-300 pl-6">
+        <p className="mt-8 text-xl text-gray-300 leading-9 font-light italic border-l-4 border-lime-300 pl-6 gsap-fade-up">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt ipsa fugit minus quae aperiam corrupti
           labore ratione. Saepe natus consectetur repellat, reprehenderit dicta quia sapiente cum.
         </p>
 
         {/* Contenido principal */}
-        <div className="mt-10 space-y-6 text-lg text-gray-300 leading-8">
+        <div className="mt-10 space-y-6 text-lg text-gray-300 leading-8 gsap-fade-up">
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt ipsa fugit minus quae aperiam corrupti
             labore ratione. Saepe natus consectetur repellat, reprehenderit dicta quia sapiente cum, recusandae et porro facilis.
@@ -153,7 +157,7 @@ const BlogDetails = () => {
         </div>
 
         {/* Tags */}
-        <div className="mt-12 pt-6 border-t border-gray-800">
+        <div className="mt-12 pt-6 border-t border-gray-800 gsap-fade-up">
           <div className="flex flex-wrap items-center gap-3">
             <span className="text-sm text-gray-400 font-semibold uppercase tracking-wider">Tags:</span>
             {["Design", "Teamwork", "Creativity", "Business", "Marketing"].map((tag) => (
@@ -168,7 +172,7 @@ const BlogDetails = () => {
         </div>
 
         {/* Compartir en redes */}
-        <div className="mt-6 flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-gray-800">
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-gray-800 gsap-fade-up">
           <span className="text-sm text-gray-400 font-semibold uppercase tracking-wider">Share this article:</span>
           <div className="flex gap-3">
             {[
@@ -187,7 +191,7 @@ const BlogDetails = () => {
         </div>
 
         {/* Sección de autor */}
-        <div className="mt-10 bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-2xl p-8 flex flex-col md:flex-row items-center gap-6">
+        <div className="mt-10 bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-2xl p-8 flex flex-col md:flex-row items-center gap-6 gsap-fade-up">
           <img
             src="https://i.pravatar.cc/150?img=12"
             alt="Author"
@@ -203,7 +207,7 @@ const BlogDetails = () => {
         </div>
 
         {/* Navegación entre posts */}
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-4 gsap-fade-up">
           {prevPost ? (
             <Link
               to={`/blogs/${prevPost.id}`}
@@ -233,18 +237,18 @@ const BlogDetails = () => {
         {/* Posts relacionados */}
         <div className="mt-20">
           <div className="flex items-end justify-between mb-8">
-            <div>
+            <div className="gsap-fade-left">
               <p className="text-lime-300 text-sm uppercase tracking-widest font-semibold">Related Posts</p>
               <h3 className="text-3xl md:text-4xl font-bold text-white mt-2">You might also like</h3>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 gsap-stagger-container">
             {relatedPosts.map((post) => (
               <Link
                 to={`/blogs/${post.id}`}
                 key={post.id}
-                className="group block bg-gray-900 border border-gray-800 rounded-xl overflow-hidden hover:border-lime-300/50 transition-all duration-300"
+                className="group block bg-gray-900 border border-gray-800 rounded-xl overflow-hidden hover:border-lime-300/50 transition-all duration-300 gsap-stagger-item"
               >
                 <div className="relative overflow-hidden h-56">
                   <img
@@ -277,7 +281,7 @@ const BlogDetails = () => {
           </div>
         </div>
       </article>
-    </>
+    </div>
   );
 };
 
